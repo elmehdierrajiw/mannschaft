@@ -261,6 +261,7 @@ const journey = [
   .welcome-visual {
     position: relative;
     min-height: 380px;
+    padding-block: 2.75rem;
   }
 
   .corner-frame {
@@ -405,6 +406,7 @@ const journey = [
   }
 
   .float-card {
+    display: none;
     position: absolute;
     z-index: 2;
     background: var(--color-surface);
@@ -415,9 +417,9 @@ const journey = [
   }
 
   .float-card-badge {
-    top: -16px;
-    right: -12px;
-    max-width: 172px;
+    top: -66px;
+    right: 8%;
+    max-width: 164px;
   }
 
   .float-card-badge strong {
@@ -438,8 +440,8 @@ const journey = [
   }
 
   .float-card-stat {
-    bottom: -16px;
-    left: -12px;
+    bottom: -60px;
+    left: 8%;
     text-align: center;
   }
 
@@ -484,6 +486,10 @@ const journey = [
   @media (min-width: 960px) {
     .welcome-grid {
       grid-template-columns: 1.05fr 0.95fr;
+    }
+
+    .float-card {
+      display: block;
     }
   }
 </style>
