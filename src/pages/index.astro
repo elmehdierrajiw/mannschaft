@@ -6,6 +6,7 @@ import CourseCard from '../components/CourseCard.astro';
 import FeatureCard from '../components/FeatureCard.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
+import PartnersSection from '../components/PartnersSection.astro';
 import CTASection from '../components/CTASection.astro';
 import { GERMAN_COURSES, EXAM_PROGRAMS, WHY_MANNSCHAFT } from '../data/courses';
 import { TESTIMONIALS } from '../data/testimonials';
@@ -130,6 +131,8 @@ const faqPreview = FAQ_ITEMS.slice(0, 5);
       </div>
     </div>
   </section>
+
+  <PartnersSection />
 
   <!-- Testimonials -->
   <section class="section" id="testimonials">
