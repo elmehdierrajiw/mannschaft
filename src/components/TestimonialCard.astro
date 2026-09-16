@@ -1,0 +1,94 @@
+---
+import type { Testimonial } from '../data/testimonials';
+
+interface Props {
+  testimonial: Testimonial;
+}
+
+const { testimonial } = Astro.props;
+---
+
+<figure class="testimonial-card card reveal">
+  <div class="stars" aria-hidden="true">★★★★★</div>
+  <blockquote>“{testimonial.quote}”</blockquote>
+  <figcaption>
+    <span class="avatar">{testimonial.initials}</span>
+    <div>
+      <span class="name">{testimonial.name}</span>
+      <span class="role">{testimonial.role}</span>
+    </div>
+    <span class="level-badge">{testimonial.level}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .testimonial-card {
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .stars {
+    color: var(--color-gold);
+    letter-spacing: 0.15em;
+    margin-bottom: 0.9rem;
+    font-size: 0.95rem;
+  }
+
+  blockquote {
+    margin: 0 0 1.4rem;
+    font-size: 0.98rem;
+    color: var(--color-text);
+    flex-grow: 1;
+    line-height: 1.65;
+  }
+
+  figcaption {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+  }
+
+  .avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .name {
+    display: block;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--color-text);
+  }
+
+  .role {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-soft);
+  }
+
+  .level-badge {
+    margin-left: auto;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: var(--color-gold-dark);
+    background: var(--color-gold-light);
+    padding: 0.3em 0.6em;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
+</style>

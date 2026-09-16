@@ -1,0 +1,305 @@
+---
+---
+
+<section class="hero">
+  <div class="hero-glow hero-glow-1" aria-hidden="true"></div>
+  <div class="hero-glow hero-glow-2" aria-hidden="true"></div>
+
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">German Language Center · Berlin &amp; Online</p>
+      <h1>Learn German that actually works — in class, at work, in life.</h1>
+      <p class="lede">
+        Mannschaft pairs small, structured classes with practical conversation and dedicated exam
+        coaching, so you build real confidence from A1 all the way to C1.
+      </p>
+      <div class="hero-actions">
+        <a href="/contact/" class="btn btn-primary">Get Started</a>
+        <a href="/courses/" class="btn btn-secondary">Request Information</a>
+      </div>
+
+      <dl class="hero-stats">
+        <div>
+          <dt>4.9/5</dt>
+          <dd>average student rating</dd>
+        </div>
+        <div>
+          <dt>2,400+</dt>
+          <dd>students coached since 2016</dd>
+        </div>
+        <div>
+          <dt>92%</dt>
+          <dd>exam pass rate</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="visual-card visual-card-main">
+        <div class="visual-card-header">
+          <span class="visual-dot"></span>
+          <span class="visual-dot"></span>
+          <span class="visual-dot"></span>
+        </div>
+        <div class="visual-line long"></div>
+        <div class="visual-line"></div>
+        <div class="visual-line short"></div>
+        <div class="visual-progress">
+          <span style="width: 72%;"></span>
+        </div>
+        <div class="visual-level">
+          <span class="level-pill">B1</span>
+          <span>Intermediate — Week 5 of 8</span>
+        </div>
+      </div>
+
+      <div class="visual-card visual-card-badge">
+        <span class="badge-icon">✓</span>
+        <div>
+          <strong>Goethe-Zertifikat</strong>
+          <small>Exam-ready coaching</small>
+        </div>
+      </div>
+
+      <div class="visual-card visual-card-groups">
+        <strong>Max 10</strong>
+        <small>students per group</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(3rem, 8vw, 5.5rem) clamp(3.5rem, 8vw, 6rem);
+    background: linear-gradient(180deg, var(--color-primary-light) 0%, var(--color-bg) 65%);
+  }
+
+  .hero-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(10px);
+    pointer-events: none;
+  }
+
+  .hero-glow-1 {
+    width: 420px;
+    height: 420px;
+    background: radial-gradient(circle, rgba(200, 155, 60, 0.25), transparent 70%);
+    top: -140px;
+    right: -100px;
+  }
+
+  .hero-glow-2 {
+    width: 320px;
+    height: 320px;
+    background: radial-gradient(circle, rgba(29, 78, 137, 0.18), transparent 70%);
+    bottom: -100px;
+    left: -80px;
+  }
+
+  .hero-grid {
+    position: relative;
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    max-width: 620px;
+  }
+
+  .hero-copy .lede {
+    max-width: 520px;
+    font-size: 1.15rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem 0 2.5rem;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    gap: 1.5rem 2rem;
+    max-width: 480px;
+  }
+
+  .hero-stats dt {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--color-navy-900);
+  }
+
+  .hero-stats dd {
+    margin: 0.15rem 0 0;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    max-width: 120px;
+  }
+
+  /* Visual composition */
+  .hero-visual {
+    position: relative;
+    min-height: 360px;
+  }
+
+  .visual-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .visual-card-main {
+    padding: 1.75rem;
+    max-width: 340px;
+    margin-inline: auto;
+  }
+
+  .visual-card-header {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 1.25rem;
+  }
+
+  .visual-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--color-border);
+  }
+
+  .visual-dot:first-child {
+    background: var(--color-gold);
+  }
+
+  .visual-line {
+    height: 10px;
+    border-radius: 6px;
+    background: var(--color-surface-alt);
+    margin-bottom: 10px;
+  }
+
+  .visual-line.long { width: 100%; }
+  .visual-line.short { width: 55%; }
+
+  .visual-progress {
+    height: 8px;
+    border-radius: 6px;
+    background: var(--color-primary-light);
+    margin: 1.4rem 0 1.2rem;
+    overflow: hidden;
+  }
+
+  .visual-progress span {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-gold));
+    border-radius: 6px;
+  }
+
+  .visual-level {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+  }
+
+  .level-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--color-navy-900);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  .visual-card-badge {
+    position: absolute;
+    top: 6%;
+    right: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.9rem 1.1rem;
+    max-width: 220px;
+  }
+
+  .badge-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--color-success);
+    color: #fff;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+  }
+
+  .visual-card-badge strong {
+    display: block;
+    font-size: 0.85rem;
+  }
+
+  .visual-card-badge small {
+    color: var(--color-text-soft);
+    font-size: 0.75rem;
+  }
+
+  .visual-card-groups {
+    position: absolute;
+    bottom: 4%;
+    left: 0;
+    padding: 1rem 1.2rem;
+    text-align: center;
+  }
+
+  .visual-card-groups strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--color-navy-900);
+  }
+
+  .visual-card-groups small {
+    color: var(--color-text-soft);
+    font-size: 0.75rem;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .visual-card-badge,
+    .visual-card-groups {
+      animation: float 6s ease-in-out infinite;
+    }
+    .visual-card-groups {
+      animation-delay: 1.5s;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @media (min-width: 960px) {
+    .hero-grid {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+  }
+</style>

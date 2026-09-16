@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CTASection from '../components/CTASection.astro';
+import { OTHER_LANGUAGES } from '../data/courses';
+---
+
+<BaseLayout
+  title="Language Courses"
+  description="Beyond German, Mannschaft offers practical, conversation-first courses in English, French, Spanish, and Italian."
+  path="/language-courses/"
+>
+  <PageHero
+    eyebrow="Language Courses"
+    title="More languages, the same practical approach"
+    description="The teaching method that works for German — small groups, real conversation, clear structure — applied to the other languages our students ask for most."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head centered">
+        <p class="eyebrow">Available Languages</p>
+        <h2>Pick a language, keep the same standards</h2>
+      </div>
+      <div class="grid grid-4">
+        {OTHER_LANGUAGES.map((lang) => (
+          <div class="lang-card card reveal">
+            <span class="lang-flag" aria-hidden="true">{lang.icon.toUpperCase()}</span>
+            <h3>{lang.name}</h3>
+            <p>{lang.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container two-col">
+      <div class="reveal">
+        <p class="eyebrow">Why Add a Language Here</p>
+        <h2>One school, one consistent standard</h2>
+        <p class="lede">
+          Many of our students are already learning German with us and want to keep a language
+          skill sharp, prepare for relocation, or support a partner or child. Our other language
+          courses follow the same small-group, conversation-first model — just with a different
+          target language.
+        </p>
+      </div>
+      <ul class="checklist reveal">
+        <li>Small groups capped at 10 students</li>
+        <li>Teachers who are native or near-native speakers</li>
+        <li>Flexible evening, weekend, and online formats</li>
+        <li>Materials included in every course fee</li>
+      </ul>
+    </div>
+  </section>
+
+  <CTASection
+    title="Interested in a language beyond German?"
+    description="Tell us your goals and timeline, and we'll recommend the right course and schedule."
+  />
+</BaseLayout>
+
+<style>
+  .lang-card {
+    padding: 1.8rem;
+    text-align: center;
+  }
+
+  .lang-flag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.8rem;
+    margin: 0 auto 1rem;
+  }
+
+  .lang-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .lang-card p {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .two-col {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .checklist li {
+    position: relative;
+    padding-left: 1.7rem;
+    font-size: 0.95rem;
+    color: var(--color-text);
+  }
+
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.3rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-gold);
+  }
+
+  @media (min-width: 768px) {
+    .two-col { grid-template-columns: 1.1fr 0.9fr; }
+  }
+</style>

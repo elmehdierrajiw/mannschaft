@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CourseCard from '../components/CourseCard.astro';
+import CTASection from '../components/CTASection.astro';
+import { GERMAN_COURSES } from '../data/courses';
+
+const programs = [
+  {
+    id: 'intensive',
+    title: 'Intensive Courses',
+    description:
+      'Daily lessons, Monday to Friday, designed to move up a full CEFR level in 4 weeks. Ideal for relocation deadlines or visa timelines.',
+    points: ['4 weeks, 20 hours/week', 'Small groups, in Berlin', 'Homework reviewed daily'],
+  },
+  {
+    id: 'conversation',
+    title: 'Conversation / Speaking Courses',
+    description:
+      'A dedicated speaking-only track for students who already know the grammar but need real fluency and confidence.',
+    points: ['Weekly small-group sessions', 'Real-life topics and roleplay', 'No new grammar — pure practice'],
+  },
+  {
+    id: 'exam-prep',
+    title: 'Exam Preparation Programs',
+    description:
+      'Focused coaching for Goethe, telc, TestDaF, and DSH, with mock exams and detailed writing and speaking feedback.',
+    points: ['Full mock exams included', 'Writing correction included', 'Flexible start dates'],
+  },
+  {
+    id: 'private',
+    title: 'Private & Corporate Coaching',
+    description:
+      'One-to-one or small private-group lessons for individuals and teams with schedules that don’t fit standard classes.',
+    points: ['Fully custom schedule', 'Tailored curriculum', 'On-site or online for teams'],
+  },
+];
+---
+
+<BaseLayout
+  title="Courses & Programs"
+  description="Explore all Mannschaft programs: German levels A1–C1, intensive courses, conversation classes, exam preparation, and private coaching."
+  path="/courses/"
+>
+  <PageHero
+    eyebrow="Courses & Programs"
+    title="Every way to learn German at Mannschaft"
+    description="Beyond our core A1–C1 levels, choose the program format that matches your timeline, goals, and schedule."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head centered">
+        <p class="eyebrow">German Levels</p>
+        <h2>A1 through C1, structured and CEFR-aligned</h2>
+      </div>
+      <div class="grid grid-3">
+        {GERMAN_COURSES.filter((c) => c.slug !== 'intensive').map((course) => (
+          <CourseCard course={course} href="/german-courses/" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head centered">
+        <p class="eyebrow">Program Formats</p>
+        <h2>Choose the format that fits your goal</h2>
+      </div>
+      <div class="grid grid-2">
+        {programs.map((program) => (
+          <div class="program-card card reveal" id={program.id}>
+            <h3>{program.title}</h3>
+            <p>{program.description}</p>
+            <ul>
+              {program.points.map((point) => (
+                <li>{point}</li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Still deciding which program is right for you?"
+    description="Share your goals and timeline — we'll recommend the best fit and next start date."
+  />
+</BaseLayout>
+
+<style>
+  .program-card {
+    padding: 1.8rem;
+    scroll-margin-top: 6rem;
+  }
+
+  .program-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .program-card p {
+    font-size: 0.92rem;
+    margin-bottom: 1rem;
+  }
+
+  .program-card ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+
+  .program-card li {
+    position: relative;
+    padding-left: 1.4rem;
+    font-size: 0.88rem;
+    color: var(--color-text);
+  }
+
+  .program-card li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.4rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--color-gold);
+  }
+</style>

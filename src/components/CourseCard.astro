@@ -1,0 +1,120 @@
+---
+import type { Course } from '../data/courses';
+
+interface Props {
+  course: Course;
+  href?: string;
+}
+
+const { course, href = '/german-courses/' } = Astro.props;
+---
+
+<article class="course-card card reveal">
+  {course.tag && <span class="tag">{course.tag}</span>}
+  <span class="level">{course.level}</span>
+  <h3>{course.title}</h3>
+  <p>{course.description}</p>
+  <dl class="meta">
+    <div>
+      <dt>Duration</dt>
+      <dd>{course.duration}</dd>
+    </div>
+    <div>
+      <dt>Format</dt>
+      <dd>{course.format}</dd>
+    </div>
+  </dl>
+  <a href={href} class="card-link">
+    Learn more
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </a>
+</article>
+
+<style>
+  .course-card {
+    position: relative;
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .tag {
+    position: absolute;
+    top: 1.4rem;
+    right: 1.4rem;
+    background: var(--color-gold-light);
+    color: var(--color-gold-dark);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 0.3em 0.7em;
+    border-radius: var(--radius-pill);
+  }
+
+  .level {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--radius-sm);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .course-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .course-card p {
+    font-size: 0.95rem;
+    flex-grow: 1;
+  }
+
+  .meta {
+    display: flex;
+    gap: 1.5rem;
+    margin: 1rem 0 1.4rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .meta dt {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text-soft);
+    margin-bottom: 0.2rem;
+  }
+
+  .meta dd {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-primary);
+    transition: gap var(--transition-base);
+  }
+
+  .card-link:hover {
+    gap: 0.6rem;
+    color: var(--color-gold-dark);
+  }
+</style>

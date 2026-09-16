@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CourseCard from '../components/CourseCard.astro';
+import CTASection from '../components/CTASection.astro';
+import { GERMAN_COURSES } from '../data/courses';
+
+const structure = [
+  {
+    title: 'Placement & goal setting',
+    description: 'A short conversation to confirm your level and what you need German for.',
+  },
+  {
+    title: 'Structured group lessons',
+    description: '2–4 sessions per week combining grammar, vocabulary, and speaking practice.',
+  },
+  {
+    title: 'Progress checks',
+    description: 'Short assessments every few weeks so you and your teacher can track growth.',
+  },
+  {
+    title: 'Level completion',
+    description: 'A certificate of completion and, if relevant, a recommendation for exam registration.',
+  },
+];
+---
+
+<BaseLayout
+  title="German Courses A1–C1"
+  description="Structured German courses from A1 to C1 with small groups, practical conversation, and clear progress tracking — in Berlin or online."
+  path="/german-courses/"
+>
+  <PageHero
+    eyebrow="German Courses"
+    title="German courses for every stage, A1 through C1"
+    description="Whether you're starting from zero or polishing advanced fluency, our CEFR-aligned courses meet you at the right level and keep you moving."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head centered">
+        <p class="eyebrow">All Levels</p>
+        <h2>Choose your starting point</h2>
+        <p class="lede">
+          New groups start regularly at every level. Not sure where to begin? We offer a free
+          placement conversation before you enroll.
+        </p>
+      </div>
+      <div class="grid grid-3">
+        {GERMAN_COURSES.map((course) => (
+          <CourseCard course={course} href="/contact/" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head centered">
+        <p class="eyebrow">How It Works</p>
+        <h2>What a course at Mannschaft looks like</h2>
+      </div>
+      <ol class="steps">
+        {structure.map((step, index) => (
+          <li class="reveal">
+            <span class="step-number">{index + 1}</span>
+            <div>
+              <h3>{step.title}</h3>
+              <p>{step.description}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <CTASection
+    title="Not sure which level fits you?"
+    description="Take our free placement conversation and get matched with the right group in under 24 hours."
+    primaryLabel="Book Placement Check"
+  />
+</BaseLayout>
+
+<style>
+  .steps {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .steps li {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+  }
+
+  .step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: var(--color-navy-900);
+    color: #fff;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .steps h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .steps p {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+</style>

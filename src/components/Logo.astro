@@ -1,0 +1,61 @@
+---
+interface Props {
+  variant?: 'dark' | 'light';
+  class?: string;
+}
+
+const { variant = 'dark', class: className = '' } = Astro.props;
+const textColor = variant === 'light' ? '#ffffff' : 'var(--color-navy-900)';
+---
+
+<a href="/" class={`logo ${className}`} aria-label="Mannschaft Sprachzentrum — Home">
+  <span class="logo-mark" aria-hidden="true">
+    <svg viewBox="0 0 64 64" width="38" height="38">
+      <rect width="64" height="64" rx="14" fill="#123457" />
+      <path
+        d="M14 46V18h6.2l7.3 15.6L34.8 18H41v28h-6.4V29.2l-6 12.9h-3.2l-6-12.9V46H14z"
+        fill="#C89B3C"
+      />
+    </svg>
+  </span>
+  <span class="logo-text">
+    <strong>Mannschaft</strong>
+    <small>Sprachzentrum</small>
+  </span>
+</a>
+
+<style define:vars={{ textColor }}>
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    flex-shrink: 0;
+  }
+
+  .logo-mark {
+    display: inline-flex;
+    border-radius: 12px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .logo-text strong {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--textColor);
+  }
+
+  .logo-text small {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-gold-dark);
+    font-weight: 600;
+  }
+</style>

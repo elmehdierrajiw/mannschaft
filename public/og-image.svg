@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E2A4A"/>
+      <stop offset="100%" stop-color="#1D4E89"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1040" cy="90" r="220" fill="#C89B3C" opacity="0.12"/>
+  <circle cx="120" cy="560" r="180" fill="#C89B3C" opacity="0.10"/>
+  <rect x="90" y="86" width="84" height="84" rx="18" fill="#C89B3C"/>
+  <path d="M112 152V106h13.7l14.9 27.3L155.5 106H169v46h-13.4V126l-11.9 21.6h-6.4L125.4 126v26z" fill="#0E2A4A"/>
+  <text x="90" y="270" font-family="Arial, sans-serif" font-size="58" font-weight="700" fill="#FBFAF7">Mannschaft</text>
+  <text x="90" y="316" font-family="Arial, sans-serif" font-size="30" fill="#F4E6C6">Sprachzentrum</text>
+  <text x="90" y="392" font-family="Arial, sans-serif" font-size="30" fill="#EAF1FA">Learn German with confidence.</text>
+  <text x="90" y="434" font-family="Arial, sans-serif" font-size="30" fill="#EAF1FA">Small groups. Real progress.</text>
+</svg>

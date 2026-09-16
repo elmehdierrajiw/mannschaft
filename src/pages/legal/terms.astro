@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { SITE } from '../../data/site';
+---
+
+<BaseLayout title="Terms" description="Terms of service for Mannschaft Sprachzentrum." path="/legal/terms/">
+  <section class="section legal-content">
+    <div class="container prose">
+      <p class="eyebrow">Legal</p>
+      <h1>Terms of Service</h1>
+      <p>
+        These terms govern your use of the {SITE.fullName} website and enrollment in our courses.
+      </p>
+
+      <h2>Course enrollment</h2>
+      <p>
+        Enrollment is confirmed once course fees are paid in full or a payment plan is agreed in
+        writing. Course start dates and schedules are confirmed by email before your first
+        lesson.
+      </p>
+
+      <h2>Cancellations</h2>
+      <p>
+        Cancellations made more than 14 days before a course start date are eligible for a full
+        refund. Cancellations after that point are handled on a case-by-case basis — contact us
+        directly.
+      </p>
+
+      <h2>Website use</h2>
+      <p>
+        Content on this website is provided for informational purposes. We aim to keep course
+        details accurate but recommend confirming specifics with an advisor before enrolling.
+      </p>
+
+      <h2>Contact</h2>
+      <p>
+        Questions about these terms can be sent to <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.
+      </p>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .legal-content {
+    padding-top: clamp(3rem, 6vw, 5rem);
+  }
+
+  .prose {
+    max-width: 680px;
+  }
+
+  .prose h1 {
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+  }
+
+  .prose h2 {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+  }
+</style>

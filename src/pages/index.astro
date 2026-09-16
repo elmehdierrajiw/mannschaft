@@ -1,0 +1,310 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import CourseCard from '../components/CourseCard.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import FaqAccordion from '../components/FaqAccordion.astro';
+import CTASection from '../components/CTASection.astro';
+import { GERMAN_COURSES, EXAM_PROGRAMS, WHY_MANNSCHAFT } from '../data/courses';
+import { TESTIMONIALS } from '../data/testimonials';
+import { FAQ_ITEMS } from '../data/faq';
+
+const homeCourses = GERMAN_COURSES.slice(0, 4);
+const faqPreview = FAQ_ITEMS.slice(0, 5);
+---
+
+<BaseLayout
+  title="Mannschaft Sprachzentrum — Modern German Language Center in Berlin"
+  description="Learn German from A1 to C1 with small classes, practical conversation, and dedicated Goethe & telc exam preparation. Join Mannschaft Sprachzentrum in Berlin or online."
+  path="/"
+>
+  <Hero />
+
+  <!-- About -->
+  <section class="section about" id="about">
+    <div class="container about-grid">
+      <div class="about-copy reveal">
+        <p class="eyebrow">About Mannschaft</p>
+        <h2>A language center built around real progress, not just attendance.</h2>
+        <p class="lede">
+          Mannschaft Sprachzentrum was founded by language teachers who were tired of oversized
+          classes and one-size-fits-all curricula. We built a school where every group is small
+          enough to notice you, and every lesson is designed around situations you'll actually
+          face — at the Bürgeramt, in a job interview, or catching up with neighbors.
+        </p>
+        <div class="about-values">
+          <div>
+            <h3>Our mission</h3>
+            <p>Make fluent, confident German achievable for anyone, on a realistic timeline.</p>
+          </div>
+          <div>
+            <h3>Our values</h3>
+            <p>Small groups, honest feedback, and teaching that respects your time and goals.</p>
+          </div>
+        </div>
+        <a href="/about/" class="btn btn-secondary">More about Mannschaft</a>
+      </div>
+      <div class="about-visual reveal" aria-hidden="true">
+        <div class="stat-card">
+          <strong>10+</strong>
+          <span>years teaching German</span>
+        </div>
+        <div class="stat-card accent">
+          <strong>10</strong>
+          <span>max students per class</span>
+        </div>
+        <div class="stat-card">
+          <strong>4</strong>
+          <span>exam boards covered</span>
+        </div>
+        <div class="stat-card accent">
+          <strong>15+</strong>
+          <span>nationalities taught</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section class="section section-alt" id="courses">
+    <div class="container">
+      <div class="section-head centered">
+        <p class="eyebrow">Courses</p>
+        <h2>Find your level, start moving forward</h2>
+        <p class="lede">
+          Structured group courses from complete beginner to advanced fluency, plus focused
+          tracks for exam prep, conversation, and fast-paced learning.
+        </p>
+      </div>
+      <div class="grid grid-4">
+        {homeCourses.map((course) => (
+          <CourseCard course={course} />
+        ))}
+      </div>
+      <div class="section-cta">
+        <a href="/courses/" class="btn btn-primary">View All Courses &amp; Programs</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exam Preparation -->
+  <section class="section exam-section" id="exams">
+    <div class="container exam-grid">
+      <div class="exam-copy reveal">
+        <p class="eyebrow">Exam Preparation</p>
+        <h2>Walk into exam day already knowing you're ready.</h2>
+        <p class="lede">
+          Our exam-prep tracks are built around the exact format, timing, and scoring of each
+          test — with mock exams, past-paper drills, and one-to-one writing feedback included.
+        </p>
+        <a href="/exam-preparation/" class="btn btn-secondary">Learn About Exam Preparation</a>
+      </div>
+      <div class="exam-list">
+        {EXAM_PROGRAMS.map((program) => (
+          <div class="exam-item reveal">
+            <div>
+              <h3>{program.name}</h3>
+              <p>{program.description}</p>
+            </div>
+            <span class="exam-levels">{program.levels}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Mannschaft -->
+  <section class="section section-alt" id="why">
+    <div class="container">
+      <div class="section-head centered">
+        <p class="eyebrow">Why Mannschaft</p>
+        <h2>What makes learning here different</h2>
+      </div>
+      <div class="grid grid-3">
+        {WHY_MANNSCHAFT.map((feature, index) => (
+          <FeatureCard title={feature.title} description={feature.description} index={index} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section" id="testimonials">
+    <div class="container">
+      <div class="section-head centered">
+        <p class="eyebrow">Student Stories</p>
+        <h2>Trusted by learners from more than 30 countries</h2>
+      </div>
+      <div class="grid grid-3">
+        {TESTIMONIALS.slice(0, 6).map((testimonial) => (
+          <TestimonialCard testimonial={testimonial} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section section-alt" id="faq">
+    <div class="container faq-layout">
+      <div class="faq-intro reveal">
+        <p class="eyebrow">FAQ</p>
+        <h2>Common questions</h2>
+        <p class="lede">
+          Can't find what you're looking for? Our team is happy to help you choose the right
+          course.
+        </p>
+        <a href="/faq/" class="btn btn-secondary">View Full FAQ</a>
+      </div>
+      <div class="faq-list">
+        <FaqAccordion items={faqPreview} />
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>
+
+<style>
+  .about-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .about-copy .lede {
+    margin-bottom: 1.5rem;
+  }
+
+  .about-values {
+    display: grid;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .about-values h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .about-values p {
+    font-size: 0.92rem;
+    margin: 0;
+  }
+
+  .about-visual {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .stat-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.75rem 1.25rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .stat-card.accent {
+    background: var(--color-navy-900);
+    border-color: var(--color-navy-900);
+  }
+
+  .stat-card strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-navy-900);
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-card.accent strong,
+  .stat-card.accent span {
+    color: #fff;
+  }
+
+  .stat-card span {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+  }
+
+  .section-cta {
+    text-align: center;
+    margin-top: 2.5rem;
+  }
+
+  .exam-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .exam-copy .lede {
+    margin-bottom: 1.5rem;
+  }
+
+  .exam-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .exam-item {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.4rem 1.5rem;
+    transition: border-color var(--transition-base), transform var(--transition-base);
+  }
+
+  .exam-item:hover {
+    border-color: var(--color-gold);
+    transform: translateY(-3px);
+  }
+
+  .exam-item h3 {
+    font-size: 1.05rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .exam-item p {
+    font-size: 0.88rem;
+    margin: 0;
+    max-width: 380px;
+  }
+
+  .exam-levels {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    padding: 0.35em 0.7em;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
+
+  .faq-layout {
+    display: grid;
+    gap: 2.5rem;
+  }
+
+  .faq-intro .lede {
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .about-grid { grid-template-columns: 1.1fr 0.9fr; }
+  }
+
+  @media (min-width: 960px) {
+    .exam-grid { grid-template-columns: 0.9fr 1.1fr; }
+    .faq-layout { grid-template-columns: 0.8fr 1.2fr; }
+  }
+</style>

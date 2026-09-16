@@ -1,0 +1,50 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  title = 'Ready to start speaking German?',
+  description = 'Book a free placement conversation with our team and get a personalized course recommendation within 24 hours.',
+  primaryLabel = 'Request Information',
+  primaryHref = '/contact/',
+  secondaryLabel = 'View Courses & Programs',
+  secondaryHref = '/courses/',
+} = Astro.props;
+---
+
+<section class="cta section section-navy">
+  <div class="container cta-inner reveal">
+    <h2>{title}</h2>
+    <p class="lede">{description}</p>
+    <div class="cta-actions">
+      <a href={primaryHref} class="btn btn-primary">{primaryLabel}</a>
+      <a href={secondaryHref} class="btn btn-on-dark">{secondaryLabel}</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-inner {
+    text-align: center;
+    max-width: 700px;
+    margin-inline: auto;
+  }
+
+  .cta h2 {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  }
+
+  .cta-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.8rem;
+  }
+</style>

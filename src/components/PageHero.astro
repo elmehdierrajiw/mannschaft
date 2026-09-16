@@ -1,0 +1,58 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+}
+
+const { eyebrow, title, description } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="container">
+    <p class="eyebrow eyebrow-on-dark">{eyebrow}</p>
+    <h1>{title}</h1>
+    <p class="lede">{description}</p>
+  </div>
+  <div class="page-hero-glow" aria-hidden="true"></div>
+</section>
+
+<style>
+  .page-hero {
+    position: relative;
+    background: linear-gradient(135deg, var(--color-navy-900), var(--color-primary));
+    color: #fff;
+    padding-block: clamp(3.5rem, 8vw, 6rem) clamp(3rem, 6vw, 4.5rem);
+    overflow: hidden;
+  }
+
+  .page-hero h1 {
+    color: #fff;
+    font-size: clamp(2.1rem, 4.5vw, 3.2rem);
+    max-width: 720px;
+  }
+
+  .page-hero .lede {
+    color: #dbe4f0;
+    max-width: 620px;
+    font-size: 1.1rem;
+  }
+
+  .eyebrow-on-dark {
+    color: var(--color-gold-light);
+  }
+
+  .eyebrow-on-dark::before {
+    background: var(--color-gold-light);
+  }
+
+  .page-hero-glow {
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, rgba(200, 155, 60, 0.35), transparent 70%);
+    pointer-events: none;
+  }
+</style>

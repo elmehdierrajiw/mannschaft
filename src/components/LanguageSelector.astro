@@ -1,0 +1,139 @@
+---
+const languages = [
+  { code: 'EN', label: 'English' },
+  { code: 'DE', label: 'Deutsch' },
+];
+---
+
+<div class="lang-select" data-lang-select>
+  <button
+    type="button"
+    class="lang-trigger"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    data-lang-trigger
+  >
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path
+        d="M12 21a9 9 0 100-18 9 9 0 000 18zM3.5 9h17M3.5 15h17M12 3c2.2 2.5 3.5 5.7 3.5 9s-1.3 6.5-3.5 9c-2.2-2.5-3.5-5.7-3.5-9S9.8 5.5 12 3z"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      ></path>
+    </svg>
+    <span data-lang-current>EN</span>
+    <svg class="chevron" width="12" height="12" viewBox="0 0 12 12" aria-hidden="true">
+      <path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </button>
+  <ul class="lang-menu" role="listbox" data-lang-menu hidden>
+    {languages.map((lang) => (
+      <li role="option" data-value={lang.code}>
+        <button type="button" data-lang-option={lang.code}>{lang.label}</button>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .lang-select {
+    position: relative;
+  }
+
+  .lang-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: transparent;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    padding: 0.5rem 0.8rem;
+    color: var(--color-text);
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color var(--transition-base), background var(--transition-base);
+  }
+
+  .lang-trigger:hover {
+    border-color: var(--color-gold);
+    background: var(--color-primary-light);
+  }
+
+  .chevron {
+    transition: transform var(--transition-base);
+  }
+
+  .lang-trigger[aria-expanded='true'] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .lang-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-md);
+    min-width: 140px;
+    padding: 0.4rem;
+    z-index: 50;
+  }
+
+  .lang-menu li button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 0.5rem 0.7rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: var(--color-text);
+  }
+
+  .lang-menu li button:hover {
+    background: var(--color-primary-light);
+  }
+</style>
+
+<script>
+  function setupLanguageSelect(root: HTMLElement) {
+    const trigger = root.querySelector<HTMLButtonElement>('[data-lang-trigger]');
+    const menu = root.querySelector<HTMLUListElement>('[data-lang-menu]');
+    const current = root.querySelector<HTMLElement>('[data-lang-current]');
+    if (!trigger || !menu || !current) return;
+
+    const close = () => {
+      menu.hidden = true;
+      trigger.setAttribute('aria-expanded', 'false');
+    };
+
+    trigger.addEventListener('click', () => {
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      menu.hidden = isOpen;
+      trigger.setAttribute('aria-expanded', String(!isOpen));
+    });
+
+    menu.querySelectorAll<HTMLButtonElement>('[data-lang-option]').forEach((option) => {
+      option.addEventListener('click', () => {
+        const value = option.dataset.langOption ?? 'EN';
+        current.textContent = value;
+        close();
+        trigger.focus();
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!root.contains(event.target as Node)) close();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') close();
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>('[data-lang-select]').forEach(setupLanguageSelect);
+</script>

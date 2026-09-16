@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CTASection from '../components/CTASection.astro';
+import { EXAM_PROGRAMS } from '../data/courses';
+
+const included = [
+  'Full-length mock exams under timed, real conditions',
+  'Detailed feedback on writing and speaking sections',
+  'Exam-specific strategy for reading and listening tasks',
+  'Registration guidance for your chosen exam body',
+];
+---
+
+<BaseLayout
+  title="Exam Preparation — Goethe, telc, TestDaF, DSH"
+  description="Dedicated German exam preparation for Goethe-Zertifikat, telc, TestDaF, and DSH with mock exams, writing feedback, and exam-day strategy."
+  path="/exam-preparation/"
+>
+  <PageHero
+    eyebrow="Exam Preparation"
+    title="Prepare for the exam that opens your next door"
+    description="Visas, university admission, jobs, and citizenship all have their own exam requirements. We coach you for the exam you actually need to pass."
+  />
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head centered">
+        <p class="eyebrow">Exams We Cover</p>
+        <h2>Choose the right certificate for your goal</h2>
+      </div>
+      <div class="grid grid-2">
+        {EXAM_PROGRAMS.map((program) => (
+          <div class="exam-card card reveal">
+            <div class="exam-card-head">
+              <h3>{program.name}</h3>
+              <span class="exam-levels">{program.levels}</span>
+            </div>
+            <p class="issuer">{program.short}</p>
+            <p>{program.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container two-col">
+      <div class="reveal">
+        <p class="eyebrow">What's Included</p>
+        <h2>Coaching built around the exam format, not just the language</h2>
+        <p class="lede">
+          Passing an exam is a different skill from speaking German well. Our exam-prep tracks
+          train both — so nothing about exam day feels unfamiliar.
+        </p>
+      </div>
+      <ul class="checklist reveal">
+        {included.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <CTASection
+    title="Ready to book your exam prep course?"
+    description="Tell us which exam and level you're targeting, and we'll recommend the right track and start date."
+    primaryLabel="Talk to an Advisor"
+  />
+</BaseLayout>
+
+<style>
+  .exam-card {
+    padding: 1.8rem;
+  }
+
+  .exam-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .exam-card h3 {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  .exam-levels {
+    flex-shrink: 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    padding: 0.3em 0.65em;
+    border-radius: var(--radius-pill);
+    white-space: nowrap;
+  }
+
+  .issuer {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-gold-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.8rem;
+  }
+
+  .two-col {
+    display: grid;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .checklist li {
+    position: relative;
+    padding-left: 1.7rem;
+    font-size: 0.95rem;
+    color: var(--color-text);
+  }
+
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.3rem;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--color-gold);
+  }
+
+  @media (min-width: 768px) {
+    .two-col { grid-template-columns: 1.1fr 0.9fr; }
+  }
+</style>

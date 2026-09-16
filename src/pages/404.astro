@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Page Not Found" path="/404/" noindex={true}>
+  <section class="section not-found">
+    <div class="container">
+      <p class="eyebrow">404</p>
+      <h1>We couldn't find that page</h1>
+      <p class="lede">
+        The page you're looking for may have moved. Try one of the links below or head back
+        home.
+      </p>
+      <div class="actions">
+        <a href="/" class="btn btn-primary">Back to Home</a>
+        <a href="/contact/" class="btn btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    text-align: center;
+    padding-block: clamp(4rem, 10vw, 7rem);
+  }
+
+  .not-found h1 {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  }
+
+  .not-found .lede {
+    max-width: 480px;
+    margin-inline: auto;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.75rem;
+  }
+</style>

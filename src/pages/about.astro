@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import CTASection from '../components/CTASection.astro';
+import { WHY_MANNSCHAFT } from '../data/courses';
+
+const timeline = [
+  { year: '2016', text: 'Mannschaft opens its first classroom in Berlin with three teachers.' },
+  { year: '2019', text: 'Launch of dedicated Goethe and telc exam-preparation tracks.' },
+  { year: '2021', text: 'Online courses introduced, reaching students across Europe.' },
+  { year: '2024', text: 'Over 2,400 students coached across A1–C1 and exam programs.' },
+];
+---
+
+<BaseLayout
+  title="About Mannschaft"
+  description="Meet Mannschaft Sprachzentrum — a Berlin-based German language center built on small classes, practical teaching, and a genuine focus on student progress."
+  path="/about/"
+>
+  <PageHero
+    eyebrow="About Mannschaft"
+    title="A team of teachers who believe smaller classes teach faster"
+    description="Mannschaft means 'team' — and that's how we approach language learning: a small group working toward a shared goal, with a teacher who actually knows your name."
+  />
+
+  <section class="section">
+    <div class="container story-grid">
+      <div class="reveal">
+        <p class="eyebrow">Our Story</p>
+        <h2>Founded by teachers, not investors</h2>
+        <p class="lede">
+          Mannschaft Sprachzentrum started when a group of language teachers grew frustrated with
+          oversized classes at larger institutes, where half the room never got to speak. We set
+          out to build something different: courses capped at ten students, lesson plans built
+          around real situations, and teachers who stay with your group from level to level.
+        </p>
+        <p>
+          Today we teach German from A1 to C1, prepare students for Goethe, telc, TestDaF, and
+          DSH exams, and offer a handful of other languages for students who need them alongside
+          German. What hasn't changed is the size of our classes or the attention every student
+          gets.
+        </p>
+      </div>
+      <div class="timeline reveal">
+        {timeline.map((item) => (
+          <div class="timeline-item">
+            <span class="timeline-year">{item.year}</span>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head centered">
+        <p class="eyebrow">Mission &amp; Values</p>
+        <h2>What guides how we teach</h2>
+      </div>
+      <div class="grid grid-2 mission-grid">
+        <div class="card mission-card reveal">
+          <h3>Our mission</h3>
+          <p>
+            Make fluent, confident German achievable for anyone, on a realistic timeline — without
+            requiring a talent for languages, just consistent, well-guided practice.
+          </p>
+        </div>
+        <div class="card mission-card reveal">
+          <h3>Our values</h3>
+          <p>
+            Small groups over big enrollment numbers. Honest feedback over false encouragement.
+            Practical German over textbook perfection. Your time respected, every session.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head centered">
+        <p class="eyebrow">Why Students Choose Us</p>
+        <h2>What makes Mannschaft different</h2>
+      </div>
+      <div class="grid grid-3">
+        {WHY_MANNSCHAFT.map((feature, index) => (
+          <div class="feature-card-simple reveal">
+            <span class="index">{String(index + 1).padStart(2, '0')}</span>
+            <h3>{feature.title}</h3>
+            <p>{feature.description}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="Want to meet the team before you enroll?"
+    description="Book a free introductory call and get all your questions answered before your first class."
+  />
+</BaseLayout>
+
+<style>
+  .story-grid {
+    display: grid;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border-left: 2px solid var(--color-border);
+    padding-left: 1.5rem;
+  }
+
+  .timeline-item {
+    position: relative;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -1.56rem;
+    top: 0.3rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-gold);
+  }
+
+  .timeline-year {
+    display: block;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    color: var(--color-navy-900);
+    margin-bottom: 0.2rem;
+  }
+
+  .timeline-item p {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+
+  .mission-card {
+    padding: 2rem;
+  }
+
+  .mission-card h3 {
+    font-size: 1.2rem;
+  }
+
+  .feature-card-simple {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 1.8rem;
+    transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+  }
+
+  .feature-card-simple:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-gold);
+  }
+
+  .feature-card-simple .index {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--color-gold-dark);
+    display: block;
+    margin-bottom: 0.8rem;
+  }
+
+  .feature-card-simple h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .feature-card-simple p {
+    font-size: 0.92rem;
+    margin: 0;
+  }
+
+  @media (min-width: 960px) {
+    .story-grid { grid-template-columns: 1.2fr 0.8fr; }
+  }
+</style>
