@@ -87,56 +87,45 @@ const journey = [
 
     <div class="welcome-visual reveal" style="transition-delay: 160ms" aria-hidden="true">
       <span class="corner-frame"></span>
-      <span class="dot-field"></span>
 
-      <div class="path-card">
-        <div class="path-card-header">
-          <span class="path-mark">
-            <svg viewBox="0 0 24 24" fill="none">
-              <path
-                d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linejoin="round"
-              ></path>
-              <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.6" />
-            </svg>
-          </span>
-          <span>Your Integration Path</span>
+      <div class="showcase-panel">
+        <div class="panel-surface">
+          <span class="showcase-glow"></span>
+          <span class="showcase-grid"></span>
+
+          <p class="showcase-tag">Berlin · Your New Chapter</p>
+          <p class="showcase-phrase">Auf geht&rsquo;s.</p>
+
+          <svg class="skyline" viewBox="0 0 420 150" preserveAspectRatio="xMidYMax slice" fill="none">
+            <path d="M0 150h420" stroke="currentColor" stroke-width="1.2" opacity="0.5"></path>
+            <g stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round">
+              <path d="M120 150V72M133 150V72M146 150V72M159 150V72M172 150V72M185 150V72"></path>
+              <path d="M112 72h81v-9l-40.5-16-40.5 16z"></path>
+              <path d="M107 150h91"></path>
+            </g>
+            <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
+              <path d="M330 150V58"></path>
+              <circle cx="330" cy="49" r="10"></circle>
+              <path d="M321 150h18"></path>
+            </g>
+          </svg>
         </div>
 
-        <ol class="path-steps">
-          <li class="is-done">
-            <span class="step-marker">✓</span>
-            <div>
-              <strong>Language</strong>
-              <small>Confident everyday &amp; professional German</small>
-            </div>
-          </li>
-          <li class="is-current">
-            <span class="step-marker">2</span>
-            <div>
-              <strong>Culture</strong>
-              <small>Workplace norms, small talk, bureaucracy</small>
-            </div>
-          </li>
-          <li>
-            <span class="step-marker">3</span>
-            <div>
-              <strong>Career</strong>
-              <small>CVs, interviews, recognition of degrees</small>
-            </div>
-          </li>
-        </ol>
-
-        <div class="float-card float-card-badge">
-          <strong>Beyond the classroom</strong>
-          <small>Cultural coaching included</small>
+        <div class="float-card float-card-quote">
+          <div class="quote-stars">★★★★★</div>
+          <p>&ldquo;I went from zero German to passing my B1 exam in eight months.&rdquo;</p>
+          <div class="quote-author">
+            <span class="quote-avatar">PN</span>
+            <span>
+              <strong>Priya Nair</strong>
+              <small>Software Engineer, Bengaluru → Berlin</small>
+            </span>
+          </div>
         </div>
 
         <div class="float-card float-card-stat">
-          <strong>3</strong>
-          <small>pillars in every course</small>
+          <strong>30+</strong>
+          <small>countries represented</small>
         </div>
       </div>
     </div>
@@ -268,141 +257,85 @@ const journey = [
     position: absolute;
     top: 50%;
     left: 50%;
-    width: min(380px, 88%);
-    height: 400px;
-    max-height: 88%;
+    width: min(440px, 90%);
+    height: 420px;
+    max-height: 90%;
     border: 1px solid var(--color-gold);
     border-radius: var(--radius-lg);
     opacity: 0.3;
-    transform: translate(-50%, -50%) rotate(-5deg);
+    transform: translate(-50%, -50%) rotate(-4deg);
   }
 
-  .dot-field {
-    position: absolute;
-    inset: 4% 4%;
-    border-radius: var(--radius-lg);
-    background-image: radial-gradient(rgba(14, 42, 74, 0.16) 1px, transparent 1.6px);
-    background-size: 18px 18px;
-    opacity: 0.3;
-    mask-image: radial-gradient(circle at 50% 40%, black 45%, transparent 85%);
-  }
-
-  .path-card {
+  .showcase-panel {
     position: relative;
     z-index: 1;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    padding: 1.75rem;
-    max-width: 340px;
+    max-width: 420px;
     margin-inline: auto;
   }
 
-  .path-card-header {
-    display: flex;
-    align-items: center;
-    gap: 0.7rem;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 0.92rem;
-    color: var(--color-navy-900);
-    margin-bottom: 1.4rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .path-card-header {
-      color: var(--color-text);
-    }
-  }
-
-  .path-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: var(--color-gold);
-    color: var(--color-navy-900);
-  }
-
-  .path-mark svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .path-steps {
+  .panel-surface {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 1.15rem;
-    padding-left: 0;
+    overflow: hidden;
+    min-height: 400px;
+    padding: 2.1rem 2rem 0;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(150deg, var(--color-navy-900) 0%, var(--color-primary) 100%);
+    box-shadow: var(--shadow-lg);
   }
 
-  .path-steps::before {
-    content: '';
+  .showcase-glow {
     position: absolute;
-    top: 14px;
-    bottom: 14px;
-    left: 13px;
-    width: 2px;
-    background: var(--color-border);
+    top: -70px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(200, 155, 60, 0.38), transparent 70%);
+    pointer-events: none;
   }
 
-  .path-steps li {
-    position: relative;
-    display: flex;
-    align-items: flex-start;
-    gap: 0.9rem;
+  .showcase-grid {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1.6px);
+    background-size: 20px 20px;
+    mask-image: linear-gradient(180deg, black, transparent 70%);
+    pointer-events: none;
   }
 
-  .step-marker {
+  .showcase-tag {
     position: relative;
     z-index: 1;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    border: 1px solid var(--color-border);
-    background: var(--color-surface);
-    color: var(--color-text-soft);
-    font-size: 0.78rem;
+    font-family: var(--font-heading);
+    font-size: 0.72rem;
     font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-gold);
+    margin: 0 0 0.85rem;
   }
 
-  .path-steps li.is-done .step-marker {
-    background: var(--color-success);
-    border-color: var(--color-success);
+  .showcase-phrase {
+    position: relative;
+    z-index: 1;
+    font-family: var(--font-heading);
+    font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+    font-weight: 700;
     color: #fff;
+    letter-spacing: -0.01em;
+    margin: 0 0 2.5rem;
   }
 
-  .path-steps li.is-current .step-marker {
-    background: var(--color-gold);
-    border-color: var(--color-gold);
-    color: var(--color-navy-900);
-  }
-
-  .path-steps strong {
-    display: block;
-    font-size: 0.92rem;
-    color: var(--color-navy-900);
-    margin-bottom: 0.1rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .path-steps strong {
-      color: var(--color-text);
-    }
-  }
-
-  .path-steps small {
-    font-size: 0.78rem;
-    color: var(--color-text-muted);
+  .skyline {
+    position: absolute;
+    z-index: 0;
+    left: -6%;
+    right: -6%;
+    bottom: 0;
+    width: 112%;
+    height: 46%;
+    color: rgba(244, 230, 198, 0.28);
+    pointer-events: none;
   }
 
   .float-card {
@@ -416,32 +349,73 @@ const journey = [
     padding: 0.85rem 1rem;
   }
 
-  .float-card-badge {
-    top: -86px;
-    right: 8%;
-    max-width: 164px;
+  .float-card-quote {
+    bottom: -34px;
+    left: 6%;
+    max-width: 230px;
   }
 
-  .float-card-badge strong {
-    display: block;
+  .quote-stars {
+    color: var(--color-gold);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.4rem;
+  }
+
+  .float-card-quote p {
     font-size: 0.82rem;
     color: var(--color-navy-900);
+    line-height: 1.4;
+    margin: 0 0 0.7rem;
   }
 
   @media (prefers-color-scheme: dark) {
-    .float-card-badge strong {
+    .float-card-quote p {
       color: var(--color-text);
     }
   }
 
-  .float-card-badge small {
-    font-size: 0.72rem;
+  .quote-author {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .quote-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    font-size: 0.7rem;
+    font-weight: 700;
+  }
+
+  .quote-author strong {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--color-navy-900);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .quote-author strong {
+      color: var(--color-text);
+    }
+  }
+
+  .quote-author small {
+    font-size: 0.7rem;
     color: var(--color-text-soft);
   }
 
   .float-card-stat {
-    bottom: -60px;
-    left: 8%;
+    top: -22px;
+    right: -20px;
     text-align: center;
   }
 
@@ -464,7 +438,7 @@ const journey = [
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .float-card-badge,
+    .float-card-quote,
     .float-card-stat {
       animation: welcome-float 6.5s ease-in-out infinite;
     }
