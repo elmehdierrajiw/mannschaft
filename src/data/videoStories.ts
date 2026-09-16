@@ -7,10 +7,10 @@ export type VideoStory = {
 // Swap these video URLs for the final videos — nothing else needs to change.
 // Supports YouTube (including Shorts) and Vimeo links.
 export const VIDEO_STORIES: VideoStory[] = [
-  { title: 'Hassan', category: 'Study', videoUrl: 'https://www.youtube.com/shorts/5udTsiR5X4c' },
-  { title: 'Youssef', category: 'Language', videoUrl: 'https://www.youtube.com/shorts/5udTsiR5X4c' },
-  { title: 'Yahya', category: 'Career', videoUrl: 'https://www.youtube.com/shorts/5udTsiR5X4c' },
-  { title: 'Taha', category: 'Training', videoUrl: 'https://www.youtube.com/shorts/5udTsiR5X4c' },
+  { title: 'Hassan', category: 'Ausbildung zum Bäcker', videoUrl: 'https://www.youtube.com/shorts/5udTsiR5X4c' },
+  { title: 'Youssef', category: 'Ausbildung zum Pflegefachmann', videoUrl: 'https://www.youtube.com/shorts/5udTsiR5X4c' },
+  { title: 'Yahya', category: 'Ausbildung zum Fachinformatiker', videoUrl: 'https://www.youtube.com/shorts/5udTsiR5X4c' },
+  { title: 'Taha', category: 'Ausbildung zum Berufskraftfahrer', videoUrl: 'https://www.youtube.com/shorts/5udTsiR5X4c' },
 ];
 
 export type VideoPlatform = 'youtube' | 'vimeo' | '';
