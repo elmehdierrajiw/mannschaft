@@ -153,7 +153,7 @@ button {
 }
 
 .section {
-  padding-block: clamp(2.75rem, 5vw, 4.5rem);
+  padding-block: clamp(2rem, 3.5vw, 3rem);
 }
 
 .section-alt {
