@@ -4,12 +4,12 @@ import WelcomeSection from '../components/WelcomeSection.astro';
 import Hero from '../components/Hero.astro';
 import CourseCard from '../components/CourseCard.astro';
 import FeatureCard from '../components/FeatureCard.astro';
-import TestimonialCard from '../components/TestimonialCard.astro';
+import VideoStoryCard from '../components/VideoStoryCard.astro';
 import FaqAccordion from '../components/FaqAccordion.astro';
 import PartnersSection from '../components/PartnersSection.astro';
 import CTASection from '../components/CTASection.astro';
 import { GERMAN_COURSES, EXAM_PROGRAMS, WHY_MANNSCHAFT } from '../data/courses';
-import { TESTIMONIALS } from '../data/testimonials';
+import { VIDEO_STORIES } from '../data/videoStories';
 import { FAQ_ITEMS } from '../data/faq';
 
 const homeCourses = GERMAN_COURSES.slice(0, 4);
@@ -141,9 +141,9 @@ const faqPreview = FAQ_ITEMS.slice(0, 5);
         <p class="eyebrow">Student Stories</p>
         <h2>Trusted by learners from more than 30 countries</h2>
       </div>
-      <div class="grid grid-3">
-        {TESTIMONIALS.slice(0, 6).map((testimonial) => (
-          <TestimonialCard testimonial={testimonial} />
+      <div class="grid grid-4 video-stories-grid">
+        {VIDEO_STORIES.map((story, index) => (
+          <VideoStoryCard title={story.title} category={story.category} vimeoUrl={story.vimeoUrl} index={index} />
         ))}
       </div>
     </div>
