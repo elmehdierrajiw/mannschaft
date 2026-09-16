@@ -15,8 +15,8 @@ export const GERMAN_COURSES: Course[] = [
     title: 'German A1 — Beginner',
     description:
       'Build your first words, phrases, and everyday expressions. Perfect for absolute beginners starting their German journey.',
-    duration: '6 weeks',
-    format: 'Group · Online or in Berlin',
+    duration: '2 months',
+    format: 'Online or in-person',
     tag: 'Most popular',
   },
   {
@@ -25,8 +25,8 @@ export const GERMAN_COURSES: Course[] = [
     title: 'German A2 — Elementary',
     description:
       'Strengthen your foundation and start handling simple everyday situations with more confidence and vocabulary.',
-    duration: '6 weeks',
-    format: 'Group · Online or in Berlin',
+    duration: '2 months',
+    format: 'Online or in-person',
   },
   {
     slug: 'b1',
@@ -34,8 +34,8 @@ export const GERMAN_COURSES: Course[] = [
     title: 'German B1 — Intermediate',
     description:
       'Communicate confidently on familiar topics, work, and travel — a common milestone for residency and work permits.',
-    duration: '8 weeks',
-    format: 'Group · Online or in Berlin',
+    duration: '2.5 months',
+    format: 'Online or in-person',
     tag: 'Visa-relevant',
   },
   {
@@ -44,8 +44,8 @@ export const GERMAN_COURSES: Course[] = [
     title: 'German B2 — Upper Intermediate',
     description:
       'Discuss complex topics fluently, follow fast conversations, and prepare for academic or professional environments.',
-    duration: '8 weeks',
-    format: 'Group · Online or in Berlin',
+    duration: '3 months',
+    format: 'Online or in-person',
   },
   {
     slug: 'intensive',
