@@ -2,16 +2,19 @@
 const journey = [
   {
     label: 'German Language',
+    short: 'Language',
     detail: 'A1 to C1, spoken with real confidence',
     icon: 'language',
   },
   {
     label: 'Cultural Fluency',
+    short: 'Culture',
     detail: 'Everyday norms and workplace etiquette',
     icon: 'culture',
   },
   {
     label: 'Career Readiness',
+    short: 'Career',
     detail: 'CVs, interviews and recognition support',
     icon: 'career',
   },
@@ -85,49 +88,78 @@ const journey = [
       </div>
     </div>
 
-    <div class="welcome-visual reveal" style="transition-delay: 160ms" aria-hidden="true">
-      <span class="corner-frame"></span>
+    <div class="welcome-visual reveal" style="transition-delay: 140ms" aria-hidden="true">
+      <div class="orbit">
+        <span class="orbit-ring"></span>
 
-      <div class="showcase-panel">
-        <div class="panel-surface">
-          <span class="showcase-glow"></span>
-          <span class="showcase-grid"></span>
+        <svg class="orbit-lines" viewBox="0 0 100 100">
+          <line x1="50" y1="50" x2="50" y2="10"></line>
+          <line x1="50" y1="50" x2="82" y2="79"></line>
+          <line x1="50" y1="50" x2="18" y2="79"></line>
+        </svg>
 
-          <p class="showcase-tag">Berlin · Your New Chapter</p>
-          <p class="showcase-phrase">Auf geht&rsquo;s.</p>
-
-          <svg class="skyline" viewBox="0 0 420 150" preserveAspectRatio="xMidYMax slice" fill="none">
-            <path d="M0 150h420" stroke="currentColor" stroke-width="1.2" opacity="0.5"></path>
-            <g stroke="currentColor" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round">
-              <path d="M120 150V72M133 150V72M146 150V72M159 150V72M172 150V72M185 150V72"></path>
-              <path d="M112 72h81v-9l-40.5-16-40.5 16z"></path>
-              <path d="M107 150h91"></path>
-            </g>
-            <g stroke="currentColor" stroke-width="1.4" stroke-linecap="round">
-              <path d="M330 150V58"></path>
-              <circle cx="330" cy="49" r="10"></circle>
-              <path d="M321 150h18"></path>
-            </g>
+        <div class="orbit-center">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path
+              d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linejoin="round"
+            ></path>
+            <path
+              d="M8.8 9.6l1.9 1.9 3.9-4"
+              stroke="currentColor"
+              stroke-width="1.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></path>
           </svg>
+          <strong>Ready</strong>
+          <small>for Germany</small>
         </div>
 
-        <div class="float-card float-card-quote">
-          <div class="quote-stars">★★★★★</div>
-          <p>&ldquo;I went from zero German to passing my B1 exam in eight months.&rdquo;</p>
-          <div class="quote-author">
-            <span class="quote-avatar">PN</span>
-            <span>
-              <strong>Priya Nair</strong>
-              <small>Software Engineer, Bengaluru → Berlin</small>
+        {journey.map((step, index) => (
+          <div class={`orbit-node orbit-node-${step.icon}`} style={`transition-delay: ${120 + index * 110}ms`}>
+            <span class="orbit-icon">
+              {step.icon === 'language' && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4.5 5.5A2 2 0 0 1 6.5 3.5h11a2 2 0 0 1 2 2v7.4a2 2 0 0 1-2 2H9.7l-4.2 3.1v-3.1h-1a2 2 0 0 1-2-2v-7.4z"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linejoin="round"
+                  ></path>
+                  <path d="M8 9h8M8 12h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+              )}
+              {step.icon === 'culture' && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" />
+                  <path d="M4 12h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+                  <path
+                    d="M12 4c2.4 2.2 2.4 13.8 0 16M12 4c-2.4 2.2-2.4 13.8 0 16"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+              )}
+              {step.icon === 'career' && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="4" y="8.5" width="16" height="10.5" rx="2" stroke="currentColor" stroke-width="1.6" />
+                  <path d="M9 8.5V7a3 3 0 0 1 6 0v1.5" stroke="currentColor" stroke-width="1.6"></path>
+                  <path d="M4 13.2h16" stroke="currentColor" stroke-width="1.6"></path>
+                </svg>
+              )}
             </span>
+            <span>{step.short}</span>
           </div>
-        </div>
-
-        <div class="float-card float-card-stat">
-          <strong>30+</strong>
-          <small>countries represented</small>
-        </div>
+        ))}
       </div>
+
+      <p class="orbit-caption reveal" style="transition-delay: 480ms">
+        Three pillars, one outcome — <strong>a confident professional life in Germany.</strong>
+      </p>
     </div>
   </div>
 </section>
@@ -246,224 +278,213 @@ const journey = [
     margin-top: 2.2rem;
   }
 
-  /* Visual composition */
+  /* Visual composition — pillars converging into one outcome */
   .welcome-visual {
     position: relative;
-    min-height: 380px;
-    padding-block: 2.75rem;
   }
 
-  .corner-frame {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: min(440px, 90%);
-    height: 420px;
-    max-height: 90%;
-    border: 1px solid var(--color-gold);
-    border-radius: var(--radius-lg);
-    opacity: 0.3;
-    transform: translate(-50%, -50%) rotate(-4deg);
-  }
-
-  .showcase-panel {
+  .orbit {
     position: relative;
-    z-index: 1;
-    max-width: 420px;
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 1;
     margin-inline: auto;
   }
 
-  .panel-surface {
-    position: relative;
-    overflow: hidden;
-    min-height: 400px;
-    padding: 2.1rem 2rem 0;
-    border-radius: var(--radius-lg);
-    background: linear-gradient(150deg, var(--color-navy-900) 0%, var(--color-primary) 100%);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .showcase-glow {
+  .orbit-ring {
     position: absolute;
-    top: -70px;
-    right: -60px;
-    width: 220px;
-    height: 220px;
+    inset: 9%;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(200, 155, 60, 0.38), transparent 70%);
-    pointer-events: none;
-  }
-
-  .showcase-grid {
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1.6px);
-    background-size: 20px 20px;
-    mask-image: linear-gradient(180deg, black, transparent 70%);
-    pointer-events: none;
-  }
-
-  .showcase-tag {
-    position: relative;
-    z-index: 1;
-    font-family: var(--font-heading);
-    font-size: 0.72rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--color-gold);
-    margin: 0 0 0.85rem;
-  }
-
-  .showcase-phrase {
-    position: relative;
-    z-index: 1;
-    font-family: var(--font-heading);
-    font-size: clamp(1.9rem, 3.2vw, 2.5rem);
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.01em;
-    margin: 0 0 2.5rem;
-  }
-
-  .skyline {
-    position: absolute;
-    z-index: 0;
-    left: -6%;
-    right: -6%;
-    bottom: 0;
-    width: 112%;
-    height: 46%;
-    color: rgba(244, 230, 198, 0.28);
-    pointer-events: none;
-  }
-
-  .float-card {
-    display: none;
-    position: absolute;
-    z-index: 2;
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-lg);
-    padding: 0.85rem 1rem;
-  }
-
-  .float-card-quote {
-    bottom: -34px;
-    left: 6%;
-    max-width: 230px;
-  }
-
-  .quote-stars {
-    color: var(--color-gold);
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.4rem;
-  }
-
-  .float-card-quote p {
-    font-size: 0.82rem;
-    color: var(--color-navy-900);
-    line-height: 1.4;
-    margin: 0 0 0.7rem;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .float-card-quote p {
-      color: var(--color-text);
-    }
-  }
-
-  .quote-author {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-
-  .quote-avatar {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    flex-shrink: 0;
-    border-radius: 50%;
-    background: var(--color-primary-light);
-    color: var(--color-primary);
-    font-family: var(--font-heading);
-    font-size: 0.7rem;
-    font-weight: 700;
-  }
-
-  .quote-author strong {
-    display: block;
-    font-size: 0.78rem;
-    color: var(--color-navy-900);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .quote-author strong {
-      color: var(--color-text);
-    }
-  }
-
-  .quote-author small {
-    font-size: 0.7rem;
-    color: var(--color-text-soft);
-  }
-
-  .float-card-stat {
-    top: -22px;
-    right: -20px;
-    text-align: center;
-  }
-
-  .float-card-stat strong {
-    display: block;
-    font-family: var(--font-heading);
-    font-size: 1.3rem;
-    color: var(--color-navy-900);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    .float-card-stat strong {
-      color: var(--color-text);
-    }
-  }
-
-  .float-card-stat small {
-    font-size: 0.72rem;
-    color: var(--color-text-soft);
+    border: 1.5px dashed var(--color-gold);
+    opacity: 0.4;
   }
 
   @media (prefers-reduced-motion: no-preference) {
-    .float-card-quote,
-    .float-card-stat {
-      animation: welcome-float 6.5s ease-in-out infinite;
-    }
-    .float-card-stat {
-      animation-delay: 1.4s;
+    .orbit-ring {
+      animation: orbit-spin 50s linear infinite;
     }
   }
 
-  @keyframes welcome-float {
+  @keyframes orbit-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .orbit-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .orbit-lines line {
+    stroke: var(--color-gold);
+    stroke-width: 0.5;
+    stroke-dasharray: 2 2.2;
+    opacity: 0.55;
+  }
+
+  .orbit-center {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    width: 37%;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(150deg, var(--color-navy-900) 0%, var(--color-primary) 100%);
+    box-shadow: var(--shadow-lg);
+    text-align: center;
+    padding: 0.5rem;
+    color: #fff;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .orbit-center {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.82);
+      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+      transition-delay: 220ms;
+    }
+
+    .welcome-visual.is-visible .orbit-center {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+      animation: orbit-pulse 4.5s ease-in-out infinite;
+      animation-delay: 0.8s;
+    }
+  }
+
+  @keyframes orbit-pulse {
     0%,
     100% {
-      transform: translateY(0);
+      box-shadow: var(--shadow-lg);
     }
     50% {
-      transform: translateY(-9px);
+      box-shadow: 0 0 0 10px rgba(200, 155, 60, 0.14), var(--shadow-lg);
+    }
+  }
+
+  .orbit-center svg {
+    width: 24%;
+    height: 24%;
+    color: var(--color-gold);
+    margin-bottom: 0.25rem;
+  }
+
+  .orbit-center strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: clamp(0.85rem, 2.4vw, 1rem);
+    font-weight: 700;
+  }
+
+  .orbit-center small {
+    font-size: clamp(0.62rem, 1.6vw, 0.7rem);
+    color: rgba(255, 255, 255, 0.75);
+  }
+
+  .orbit-node {
+    position: absolute;
+    z-index: 1;
+    top: 79%;
+    width: 28%;
+    aspect-ratio: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    border-radius: 50%;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: clamp(0.62rem, 1.8vw, 0.75rem);
+    color: var(--color-navy-900);
+    text-align: center;
+    padding: 0.4rem;
+    transform: translate(-50%, -50%);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .orbit-node {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.82);
+      transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+    }
+
+    .welcome-visual.is-visible .orbit-node {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .orbit-node {
+      color: var(--color-text);
+    }
+  }
+
+  .orbit-node-language {
+    top: 10%;
+    left: 50%;
+  }
+
+  .orbit-node-culture {
+    left: 82%;
+  }
+
+  .orbit-node-career {
+    left: 18%;
+  }
+
+  .orbit-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+
+  .orbit-icon svg {
+    width: 55%;
+    height: 55%;
+  }
+
+  .orbit-caption {
+    max-width: 300px;
+    margin: 1.8rem auto 0;
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    line-height: 1.55;
+  }
+
+  .orbit-caption strong {
+    color: var(--color-navy-900);
+    font-weight: 700;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .orbit-caption strong {
+      color: var(--color-text);
     }
   }
 
   @media (min-width: 960px) {
     .welcome-grid {
       grid-template-columns: 1.05fr 0.95fr;
-    }
-
-    .float-card {
-      display: block;
     }
   }
 </style>
