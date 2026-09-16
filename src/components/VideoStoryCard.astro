@@ -248,6 +248,14 @@ if (platform === 'youtube' && videoId) {
           iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
         }
         iframe.setAttribute('allowfullscreen', '');
+        // Set sizing inline: this iframe is created at runtime, so it never
+        // receives Astro's scoped-CSS attribute and the component's <style>
+        // rules for "iframe" would otherwise never match it.
+        iframe.style.position = 'absolute';
+        iframe.style.inset = '0';
+        iframe.style.width = '100%';
+        iframe.style.height = '100%';
+        iframe.style.border = '0';
         card.innerHTML = '';
         card.appendChild(iframe);
       });
