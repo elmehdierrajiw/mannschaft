@@ -1,0 +1,1 @@
+import"./hoisted.BlRSBUR7.js";const t=document.querySelector("[data-contact-form]"),e=document.querySelector("[data-form-status]");t&&e&&t.addEventListener("submit",()=>{e.textContent="Sending your message…"});

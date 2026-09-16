@@ -1,0 +1,1 @@
+import"./hoisted.BlRSBUR7.js";document.querySelectorAll(".faq-trigger").forEach(e=>{e.addEventListener("click",()=>{const t=e.getAttribute("aria-controls"),n=t?document.getElementById(t):null,a=e.getAttribute("aria-expanded")==="true";e.setAttribute("aria-expanded",String(!a)),n&&(n.hidden=a)})});

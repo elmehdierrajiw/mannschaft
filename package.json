@@ -1,0 +1,22 @@
+{
+  "name": "mannschaft-sprachzentrum",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "cf:preview": "npm run build && wrangler pages dev ./dist",
+    "cf:deploy": "npm run build && wrangler pages deploy ./dist"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.2.1",
+    "astro": "^4.16.7"
+  },
+  "devDependencies": {
+    "wrangler": "^3.90.0"
+  }
+}
