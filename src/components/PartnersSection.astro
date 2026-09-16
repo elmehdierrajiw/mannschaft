@@ -1,6 +1,10 @@
 ---
-// Placeholder tiles until real partner names and logo assets are provided.
-const partners = ['Partner One', 'Partner Two', 'Partner Three', 'Partner Four', 'Partner Five', 'Partner Six'];
+const partners = [
+  { name: 'Goethe-Institut', logo: '/goethe-institut.png' },
+  { name: 'ÖSD Prüfungszentrum', logo: '/oesd.png' },
+  { name: 'TLScontact', logo: '/tlscontact.png' },
+  { name: 'Bundesagentur für Arbeit', logo: '/bundesagentur-fuer-arbeit.png' },
+];
 ---
 
 <section class="section partners" id="partners" aria-label="Our Cooperation Partners">
@@ -17,10 +21,14 @@ const partners = ['Partner One', 'Partner Two', 'Partner Three', 'Partner Four',
     <div class="partners-marquee reveal" style="transition-delay: 100ms">
       <div class="partners-track">
         {partners.map((partner) => (
-          <span class="partner-tile">{partner}</span>
+          <span class="partner-tile">
+            <img src={partner.logo} alt={partner.name} loading="lazy" />
+          </span>
         ))}
         {partners.map((partner) => (
-          <span class="partner-tile" aria-hidden="true">{partner}</span>
+          <span class="partner-tile" aria-hidden="true">
+            <img src={partner.logo} alt="" loading="lazy" />
+          </span>
         ))}
       </div>
     </div>
@@ -63,34 +71,34 @@ const partners = ['Partner One', 'Partner Two', 'Partner Three', 'Partner Four',
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: 170px;
-    height: 84px;
-    padding: 0 1.25rem;
-    text-align: center;
-    background: var(--color-surface);
+    width: 190px;
+    height: 96px;
+    padding: 1.1rem 1.5rem;
+    background: #fff;
     border: 1px solid var(--color-border);
     border-radius: var(--radius-md);
-    font-family: var(--font-heading);
-    font-weight: 600;
-    font-size: 0.85rem;
-    letter-spacing: 0.02em;
-    color: var(--color-text-soft);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition-base), border-color var(--transition-base);
+  }
+
+  .partner-tile img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
     filter: grayscale(1);
-    opacity: 0.75;
-    transition: opacity var(--transition-base), filter var(--transition-base), border-color var(--transition-base),
-      color var(--transition-base);
+    opacity: 0.7;
+    transition: opacity var(--transition-base), filter var(--transition-base);
   }
 
   .partner-tile:hover {
-    opacity: 1;
-    filter: grayscale(0);
     border-color: var(--color-gold);
-    color: var(--color-navy-900);
+    box-shadow: var(--shadow-md);
   }
 
-  @media (prefers-color-scheme: dark) {
-    .partner-tile:hover {
-      color: var(--color-text);
-    }
+  .partner-tile:hover img {
+    opacity: 1;
+    filter: grayscale(0);
   }
 </style>
