@@ -88,19 +88,25 @@ const isActive = (href: string) => {
     justify-content: space-between;
     gap: 1.5rem;
     padding-block: 0.9rem;
+    max-width: 1560px;
   }
 
   .nav-desktop {
     display: none;
+    flex-shrink: 0;
+    min-width: 0;
   }
 
   .nav-desktop ul {
     display: flex;
-    gap: 1.6rem;
+    flex-wrap: nowrap;
+    gap: 1.1rem;
   }
 
   .nav-desktop a {
-    font-size: 0.92rem;
+    display: inline-block;
+    white-space: nowrap;
+    font-size: 0.86rem;
     font-weight: 600;
     color: var(--color-text-muted);
     padding: 0.4rem 0;
