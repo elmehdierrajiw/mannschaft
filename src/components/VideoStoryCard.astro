@@ -10,12 +10,35 @@ interface Props {
 
 const { title, category, videoUrl, index = 0 } = Astro.props;
 const { platform, id: videoId } = parseVideoUrl(videoUrl);
+
+let thumbnailUrl: string | null = null;
+
+if (platform === 'youtube' && videoId) {
+  thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+} else if (platform === 'vimeo' && videoId) {
+  try {
+    const res = await fetch(
+      `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(videoUrl)}&width=640`
+    );
+    if (res.ok) {
+      const data = await res.json();
+      thumbnailUrl = data.thumbnail_url ?? null;
+    }
+  } catch {
+    thumbnailUrl = null;
+  }
+}
 ---
 
 <div class="video-card reveal" style={`transition-delay: ${index * 110}ms`}>
   <div class="video-frame" data-video-card data-video-id={videoId} data-video-platform={platform}>
     <div class="video-poster">
-      <span class="poster-texture" aria-hidden="true"></span>
+      {thumbnailUrl ? (
+        <img src={thumbnailUrl} alt={`${title} — video preview`} class="poster-image" loading="lazy" />
+      ) : (
+        <span class="poster-texture" aria-hidden="true"></span>
+      )}
+      <span class="poster-overlay" aria-hidden="true"></span>
       <span class="poster-badge">{category}</span>
 
       <button type="button" class="play-button" aria-label={`Play video: ${title}`}>
@@ -63,7 +86,33 @@ const { platform, id: videoId } = parseVideoUrl(videoUrl);
     display: flex;
     align-items: flex-start;
     justify-content: center;
+    overflow: hidden;
     background: linear-gradient(165deg, var(--color-navy-900) 0%, var(--color-primary) 100%);
+  }
+
+  .poster-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s var(--ease-out);
+  }
+
+  .video-card:hover .poster-image {
+    transform: scale(1.06);
+  }
+
+  .poster-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(14, 42, 74, 0.35) 0%,
+      rgba(14, 42, 74, 0.15) 30%,
+      rgba(14, 42, 74, 0.55) 100%
+    );
+    pointer-events: none;
   }
 
   .poster-texture {
