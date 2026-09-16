@@ -10,20 +10,45 @@ const { course, href = '/german-courses/' } = Astro.props;
 ---
 
 <article class="course-card card reveal">
+  <span class="accent-bar" aria-hidden="true"></span>
   {course.tag && <span class="tag">{course.tag}</span>}
+
   <span class="level">{course.level}</span>
   <h3>{course.title}</h3>
   <p>{course.description}</p>
+
   <dl class="meta">
     <div>
-      <dt>Duration</dt>
-      <dd>{course.duration}</dd>
+      <span class="meta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.5" />
+          <path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </span>
+      <span>
+        <dt>Duration</dt>
+        <dd>{course.duration}</dd>
+      </span>
     </div>
     <div>
-      <dt>Format</dt>
-      <dd>{course.format}</dd>
+      <span class="meta-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path
+            d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linejoin="round"
+          />
+          <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.5" />
+        </svg>
+      </span>
+      <span>
+        <dt>Format</dt>
+        <dd>{course.format}</dd>
+      </span>
     </div>
   </dl>
+
   <a href={href} class="card-link">
     Learn more
     <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -35,15 +60,31 @@ const { course, href = '/german-courses/' } = Astro.props;
 <style>
   .course-card {
     position: relative;
-    padding: 1.8rem;
+    overflow: hidden;
+    padding: 1.9rem 1.8rem 1.8rem;
     display: flex;
     flex-direction: column;
     height: 100%;
   }
 
+  .accent-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-navy-900), var(--color-primary), var(--color-gold));
+    opacity: 0.55;
+    transition: opacity var(--transition-base);
+  }
+
+  .course-card:hover .accent-bar {
+    opacity: 1;
+  }
+
   .tag {
     position: absolute;
-    top: 1.4rem;
+    top: 1.5rem;
     right: 1.4rem;
     background: var(--color-gold-light);
     color: var(--color-gold-dark);
@@ -59,15 +100,16 @@ const { course, href = '/german-courses/' } = Astro.props;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 3rem;
-    height: 3rem;
-    border-radius: var(--radius-sm);
-    background: var(--color-primary-light);
-    color: var(--color-primary);
+    width: 3.1rem;
+    height: 3.1rem;
+    border-radius: var(--radius-md);
+    background: linear-gradient(150deg, var(--color-navy-900) 0%, var(--color-primary) 100%);
+    color: #fff;
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 0.85rem;
-    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.1rem;
   }
 
   .course-card h3 {
@@ -82,22 +124,46 @@ const { course, href = '/german-courses/' } = Astro.props;
 
   .meta {
     display: flex;
-    gap: 1.5rem;
-    margin: 1rem 0 1.4rem;
-    padding-top: 1rem;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin: 1.1rem 0 1.4rem;
+    padding-top: 1.1rem;
     border-top: 1px solid var(--color-border);
   }
 
+  .meta > div {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .meta-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+
+  .meta-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+
   .meta dt {
-    font-size: 0.72rem;
+    font-size: 0.68rem;
     text-transform: uppercase;
     letter-spacing: 0.04em;
     color: var(--color-text-soft);
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.1rem;
   }
 
   .meta dd {
-    font-size: 0.88rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: var(--color-text);
     margin: 0;
@@ -107,10 +173,11 @@ const { course, href = '/german-courses/' } = Astro.props;
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    font-weight: 600;
+    font-family: var(--font-heading);
+    font-weight: 700;
     font-size: 0.9rem;
     color: var(--color-primary);
-    transition: gap var(--transition-base);
+    transition: gap var(--transition-base), color var(--transition-base);
   }
 
   .card-link:hover {

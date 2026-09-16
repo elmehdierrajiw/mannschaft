@@ -70,9 +70,12 @@ const faqPreview = FAQ_ITEMS.slice(0, 5);
   </section>
 
   <!-- Courses -->
-  <section class="section section-alt" id="courses">
+  <section class="section section-alt courses-section" id="courses">
+    <span class="courses-glow courses-glow-1" aria-hidden="true"></span>
+    <span class="courses-glow courses-glow-2" aria-hidden="true"></span>
+
     <div class="container">
-      <div class="section-head centered">
+      <div class="section-head centered reveal">
         <p class="eyebrow">Courses</p>
         <h2>Find your level, start moving forward</h2>
         <p class="lede">
@@ -85,8 +88,11 @@ const faqPreview = FAQ_ITEMS.slice(0, 5);
           <CourseCard course={course} />
         ))}
       </div>
-      <div class="section-cta">
+      <div class="section-cta reveal">
         <a href="/courses/" class="btn btn-primary">View All Courses &amp; Programs</a>
+        <p class="section-cta-note">
+          Not sure where to start? <a href="/contact/">Take a free placement check →</a>
+        </p>
       </div>
     </div>
   </section>
