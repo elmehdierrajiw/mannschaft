@@ -3,7 +3,7 @@ const journey = [
   {
     label: 'German Language',
     short: 'Language',
-    detail: 'A1 to C1, spoken with real confidence',
+    detail: 'A1 to B2, spoken with real confidence',
     icon: 'language',
   },
   {
@@ -326,6 +326,27 @@ const journey = [
     opacity: 0.55;
   }
 
+  @media (prefers-reduced-motion: no-preference) {
+    .orbit-lines line {
+      opacity: 0;
+      transition: opacity 0.5s var(--ease-out);
+    }
+
+    .welcome-visual.is-visible .orbit-lines line:nth-child(1) {
+      transition-delay: 60ms;
+    }
+    .welcome-visual.is-visible .orbit-lines line:nth-child(2) {
+      transition-delay: 170ms;
+    }
+    .welcome-visual.is-visible .orbit-lines line:nth-child(3) {
+      transition-delay: 280ms;
+    }
+
+    .welcome-visual.is-visible .orbit-lines line {
+      opacity: 0.55;
+    }
+  }
+
   .orbit-center {
     position: absolute;
     z-index: 2;
@@ -343,31 +364,52 @@ const journey = [
     text-align: center;
     padding: 0.5rem;
     color: #fff;
+    transform: translate(-50%, -50%);
+  }
+
+  .orbit-center::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid var(--color-gold);
+    opacity: 0;
+    pointer-events: none;
   }
 
   @media (prefers-reduced-motion: no-preference) {
     .orbit-center {
       opacity: 0;
-      transform: translate(-50%, -50%) scale(0.82);
-      transition: opacity 0.6s var(--ease-out), transform 0.6s var(--ease-out);
-      transition-delay: 220ms;
+      transform: translate(-50%, -50%) scale(0.75);
+      transition: opacity 0.55s var(--ease-out), transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1),
+        box-shadow 0.3s var(--ease-out);
+      transition-delay: 200ms;
     }
 
     .welcome-visual.is-visible .orbit-center {
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
-      animation: orbit-pulse 4.5s ease-in-out infinite;
-      animation-delay: 0.8s;
+    }
+
+    .welcome-visual.is-visible .orbit-center:hover {
+      transform: translate(-50%, -50%) scale(1.05);
+    }
+
+    .welcome-visual.is-visible .orbit-center::before {
+      animation: orbit-ping 3.4s ease-out infinite;
+      animation-delay: 1.1s;
     }
   }
 
-  @keyframes orbit-pulse {
-    0%,
-    100% {
-      box-shadow: var(--shadow-lg);
+  @keyframes orbit-ping {
+    0% {
+      transform: scale(1);
+      opacity: 0.5;
     }
-    50% {
-      box-shadow: 0 0 0 10px rgba(200, 155, 60, 0.14), var(--shadow-lg);
+    75%,
+    100% {
+      transform: scale(1.55);
+      opacity: 0;
     }
   }
 
@@ -376,6 +418,11 @@ const journey = [
     height: 24%;
     color: var(--color-gold);
     margin-bottom: 0.25rem;
+    transition: transform 0.3s var(--ease-out);
+  }
+
+  .welcome-visual.is-visible .orbit-center:hover svg {
+    transform: scale(1.12);
   }
 
   .orbit-center strong {
@@ -412,18 +459,29 @@ const journey = [
     text-align: center;
     padding: 0.4rem;
     transform: translate(-50%, -50%);
+    transition: border-color 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+  }
+
+  .welcome-visual.is-visible .orbit-node:hover {
+    border-color: var(--color-gold);
+    box-shadow: var(--shadow-lg);
   }
 
   @media (prefers-reduced-motion: no-preference) {
     .orbit-node {
       opacity: 0;
-      transform: translate(-50%, -50%) scale(0.82);
-      transition: opacity 0.5s var(--ease-out), transform 0.5s var(--ease-out);
+      transform: translate(-50%, -50%) scale(0.7);
+      transition: opacity 0.5s var(--ease-out), transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1),
+        border-color 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
     }
 
     .welcome-visual.is-visible .orbit-node {
       opacity: 1;
       transform: translate(-50%, -50%) scale(1);
+    }
+
+    .welcome-visual.is-visible .orbit-node:hover {
+      transform: translate(-50%, -50%) scale(1.08);
     }
   }
 
@@ -455,11 +513,17 @@ const journey = [
     border-radius: 50%;
     background: var(--color-primary-light);
     color: var(--color-primary);
+    transition: background 0.25s var(--ease-out), color 0.25s var(--ease-out);
   }
 
   .orbit-icon svg {
     width: 55%;
     height: 55%;
+  }
+
+  .welcome-visual.is-visible .orbit-node:hover .orbit-icon {
+    background: var(--color-gold);
+    color: var(--color-navy-900);
   }
 
   .orbit-caption {

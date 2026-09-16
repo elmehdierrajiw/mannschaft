@@ -36,7 +36,7 @@ export const TESTIMONIALS: Testimonial[] = [
     role: 'Product Manager, Accra',
     quote:
       'Flexible evening classes let me keep working full-time while studying. My advisor checked in regularly and kept me on track for the Goethe exam.',
-    level: 'Goethe C1',
+    level: 'Goethe B2',
     initials: 'DO',
   },
   {

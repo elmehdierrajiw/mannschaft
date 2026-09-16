@@ -8,7 +8,7 @@ export const FAQ_ITEMS: FaqItem[] = [
   {
     question: 'What levels of German do you teach?',
     answer:
-      'We teach the full range from A1 (complete beginner) through C1 (advanced), following the Common European Framework of Reference (CEFR). New courses start every few weeks, so you can join at the right level after a short placement check.',
+      'We teach the full range from A1 (complete beginner) through B2 (upper-intermediate), following the Common European Framework of Reference (CEFR). New courses start every few weeks, so you can join at the right level after a short placement check.',
   },
   {
     question: 'How many students are in each class?',

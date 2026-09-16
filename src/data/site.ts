@@ -34,7 +34,7 @@ export const NAV_LINKS: NavLink[] = [
 ];
 
 export const FOOTER_COURSE_LINKS: NavLink[] = [
-  { label: 'German A1–C1', href: '/german-courses/' },
+  { label: 'German A1–B2', href: '/german-courses/' },
   { label: 'Exam Preparation', href: '/exam-preparation/' },
   { label: 'Language Courses', href: '/language-courses/' },
   { label: 'Intensive Courses', href: '/courses/#intensive' },

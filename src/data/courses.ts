@@ -48,15 +48,6 @@ export const GERMAN_COURSES: Course[] = [
     format: 'Group · Online or in Berlin',
   },
   {
-    slug: 'c1',
-    level: 'C1',
-    title: 'German C1 — Advanced',
-    description:
-      'Refine nuance, precision, and style for university, leadership roles, and demanding professional settings.',
-    duration: '10 weeks',
-    format: 'Group · Online or in Berlin',
-  },
-  {
     slug: 'intensive',
     level: 'Intensive',
     title: 'Intensive German Course',
@@ -104,28 +95,28 @@ export const EXAM_PROGRAMS: ExamProgram[] = [
     short: 'Goethe-Institut',
     description:
       'Internationally recognized German exams accepted by universities, employers, and immigration authorities worldwide.',
-    levels: 'A1 – C2',
+    levels: 'A1 – B2',
   },
   {
     name: 'telc Deutsch',
     short: 'telc GmbH',
     description:
       'Practical, standardized exams widely used for visa applications, naturalization, and workplace requirements.',
-    levels: 'A1 – C1',
+    levels: 'A1 – B2',
   },
   {
     name: 'TestDaF',
     short: 'TestDaF-Institut',
     description:
       'The standard German exam for university admission, assessing academic language proficiency in one sitting.',
-    levels: 'B2 – C1',
+    levels: 'B2',
   },
   {
     name: 'DSH',
     short: 'University exam',
     description:
       'German university entrance exam preparation, tailored to the specific requirements of your target institution.',
-    levels: 'B2 – C1',
+    levels: 'B2',
   },
 ];
 
