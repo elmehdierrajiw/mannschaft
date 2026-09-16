@@ -1,18 +1,28 @@
 export type VideoStory = {
   title: string;
   category: string;
-  vimeoUrl: string;
+  videoUrl: string;
 };
 
-// Swap these Vimeo URLs for the final videos — nothing else needs to change.
+// Swap these video URLs for the final videos — nothing else needs to change.
+// Supports YouTube (including Shorts) and Vimeo links.
 export const VIDEO_STORIES: VideoStory[] = [
-  { title: 'Master BWL', category: 'Study', vimeoUrl: 'https://vimeo.com/273986143' },
-  { title: 'Deutsche Sprache', category: 'Language', vimeoUrl: 'https://vimeo.com/273986143' },
-  { title: 'Arbeit in Deutschland', category: 'Career', vimeoUrl: 'https://vimeo.com/273986143' },
-  { title: 'Ausbildung', category: 'Training', vimeoUrl: 'https://vimeo.com/273986143' },
+  { title: 'Hassan', category: 'Study', videoUrl: 'https://www.youtube.com/shorts/5udTsiR5X4c' },
+  { title: 'Youssef', category: 'Language', videoUrl: 'https://www.youtube.com/shorts/5udTsiR5X4c' },
+  { title: 'Yahya', category: 'Career', videoUrl: 'https://www.youtube.com/shorts/5udTsiR5X4c' },
+  { title: 'Taha', category: 'Training', videoUrl: 'https://www.youtube.com/shorts/5udTsiR5X4c' },
 ];
 
-export function getVimeoId(url: string): string {
-  const match = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
-  return match ? match[1] : '';
+export type VideoPlatform = 'youtube' | 'vimeo' | '';
+
+export function parseVideoUrl(url: string): { platform: VideoPlatform; id: string } {
+  const youtubeMatch = url.match(
+    /(?:youtube\.com\/(?:shorts\/|watch\?v=|embed\/)|youtu\.be\/)([a-zA-Z0-9_-]+)/
+  );
+  if (youtubeMatch) return { platform: 'youtube', id: youtubeMatch[1] };
+
+  const vimeoMatch = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+  if (vimeoMatch) return { platform: 'vimeo', id: vimeoMatch[1] };
+
+  return { platform: '', id: '' };
 }

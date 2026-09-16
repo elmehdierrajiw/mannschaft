@@ -1,19 +1,19 @@
 ---
-import { getVimeoId } from '../data/videoStories';
+import { parseVideoUrl } from '../data/videoStories';
 
 interface Props {
   title: string;
   category: string;
-  vimeoUrl: string;
+  videoUrl: string;
   index?: number;
 }
 
-const { title, category, vimeoUrl, index = 0 } = Astro.props;
-const vimeoId = getVimeoId(vimeoUrl);
+const { title, category, videoUrl, index = 0 } = Astro.props;
+const { platform, id: videoId } = parseVideoUrl(videoUrl);
 ---
 
 <div class="video-card reveal" style={`transition-delay: ${index * 110}ms`}>
-  <div class="video-frame" data-video-card data-vimeo-id={vimeoId}>
+  <div class="video-frame" data-video-card data-video-id={videoId} data-video-platform={platform}>
     <div class="video-poster">
       <span class="poster-texture" aria-hidden="true"></span>
       <span class="poster-badge">{category}</span>
@@ -187,11 +187,17 @@ const vimeoId = getVimeoId(vimeoUrl);
     cards.forEach((card) => {
       const button = card.querySelector('.play-button');
       button?.addEventListener('click', () => {
-        const vimeoId = card.dataset.vimeoId;
-        if (!vimeoId) return;
+        const videoId = card.dataset.videoId;
+        const platform = card.dataset.videoPlatform;
+        if (!videoId || !platform) return;
         const iframe = document.createElement('iframe');
-        iframe.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&title=0&byline=0&portrait=0`;
-        iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+        if (platform === 'youtube') {
+          iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+          iframe.setAttribute('allow', 'autoplay; encrypted-media; picture-in-picture');
+        } else {
+          iframe.src = `https://player.vimeo.com/video/${videoId}?autoplay=1&title=0&byline=0&portrait=0`;
+          iframe.setAttribute('allow', 'autoplay; fullscreen; picture-in-picture');
+        }
         iframe.setAttribute('allowfullscreen', '');
         card.innerHTML = '';
         card.appendChild(iframe);
