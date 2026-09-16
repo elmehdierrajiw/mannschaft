@@ -1,96 +1,488 @@
 ---
-const pillars = [
-  { label: 'German Language' },
-  { label: 'Cultural Integration' },
-  { label: 'Professional Life in Germany' },
+const journey = [
+  {
+    label: 'German Language',
+    detail: 'A1 to C1, spoken with real confidence',
+    icon: 'language',
+  },
+  {
+    label: 'Cultural Fluency',
+    detail: 'Everyday norms and workplace etiquette',
+    icon: 'culture',
+  },
+  {
+    label: 'Career Readiness',
+    detail: 'CVs, interviews and recognition support',
+    icon: 'career',
+  },
 ];
 ---
 
 <section class="welcome">
-  <div class="container welcome-inner">
-    <span class="welcome-badge" aria-hidden="true">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
-        <path
-          d="M4 12c2-3 4-4.5 8-4.5S18 9 20 12c-2 3-4 4.5-8 4.5S6 15 4 12z"
-          stroke="currentColor"
-          stroke-width="1.6"
-          stroke-linejoin="round"
-        ></path>
-        <circle cx="12" cy="12" r="2.4" stroke="currentColor" stroke-width="1.6" />
-      </svg>
-    </span>
+  <div class="welcome-backdrop" aria-hidden="true">
+    <span class="welcome-glow welcome-glow-1"></span>
+    <span class="welcome-glow welcome-glow-2"></span>
+  </div>
 
-    <p class="eyebrow">Welcome</p>
-    <h1>Welcome to Mannschaft</h1>
-    <p class="lede">
-      Mannschaft is a German language center that helps people prepare for life and work in
-      Germany — not just for a test. Alongside structured German lessons, we build the cultural
-      understanding and everyday know-how that make settling into professional life here feel
-      natural, so you arrive not just speaking the language, but ready to belong.
-    </p>
+  <div class="container welcome-grid">
+    <div class="welcome-copy">
+      <p class="eyebrow reveal">Welcome to Mannschaft</p>
+      <h1 class="reveal" style="transition-delay: 60ms">
+        More than German lessons — your bridge into professional life in Germany.
+      </h1>
+      <p class="lede reveal" style="transition-delay: 120ms">
+        We prepare you linguistically, culturally, and practically for the working world here:
+        real conversation skills, the cultural instincts that make everyday life click, and the
+        know-how to walk into interviews, offices, and Ämter with confidence.
+      </p>
 
-    <ul class="pillars">
-      {pillars.map((pillar) => (
-        <li>{pillar.label}</li>
-      ))}
-    </ul>
+      <ul class="journey-list">
+        {journey.map((step, index) => (
+          <li class="reveal" style={`transition-delay: ${180 + index * 90}ms`}>
+            <span class="journey-icon" aria-hidden="true">
+              {step.icon === 'language' && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M4 12c2-3 4-4.5 8-4.5S18 9 20 12c-2 3-4 4.5-8 4.5S6 15 4 12z"
+                    stroke="currentColor"
+                    stroke-width="1.6"
+                    stroke-linejoin="round"
+                  ></path>
+                  <circle cx="12" cy="12" r="2.2" stroke="currentColor" stroke-width="1.6" />
+                </svg>
+              )}
+              {step.icon === 'culture' && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="8.2" stroke="currentColor" stroke-width="1.6" />
+                  <path
+                    d="M14.6 9.4 12.6 12.6 9.4 14.6l2-3.2 3.2-2z"
+                    stroke="currentColor"
+                    stroke-width="1.4"
+                    stroke-linejoin="round"
+                  ></path>
+                </svg>
+              )}
+              {step.icon === 'career' && (
+                <svg viewBox="0 0 24 24" fill="none">
+                  <rect x="4" y="8.5" width="16" height="10.5" rx="2" stroke="currentColor" stroke-width="1.6" />
+                  <path d="M9 8.5V7a3 3 0 0 1 6 0v1.5" stroke="currentColor" stroke-width="1.6"></path>
+                  <path d="M4 13.2h16" stroke="currentColor" stroke-width="1.6"></path>
+                </svg>
+              )}
+            </span>
+            <span class="journey-text">
+              <strong>{step.label}</strong>
+              <small>{step.detail}</small>
+            </span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="welcome-actions reveal" style="transition-delay: 460ms">
+        <a href="/contact/" class="btn btn-primary">Start Your Journey</a>
+        <a href="/about/" class="btn btn-secondary">See How We Teach</a>
+      </div>
+    </div>
+
+    <div class="welcome-visual reveal" style="transition-delay: 160ms" aria-hidden="true">
+      <span class="corner-frame"></span>
+      <span class="dot-field"></span>
+
+      <div class="path-card">
+        <div class="path-card-header">
+          <span class="path-mark">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path
+                d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21z"
+                stroke="currentColor"
+                stroke-width="1.6"
+                stroke-linejoin="round"
+              ></path>
+              <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.6" />
+            </svg>
+          </span>
+          <span>Your Integration Path</span>
+        </div>
+
+        <ol class="path-steps">
+          <li class="is-done">
+            <span class="step-marker">✓</span>
+            <div>
+              <strong>Language</strong>
+              <small>Confident everyday &amp; professional German</small>
+            </div>
+          </li>
+          <li class="is-current">
+            <span class="step-marker">2</span>
+            <div>
+              <strong>Culture</strong>
+              <small>Workplace norms, small talk, bureaucracy</small>
+            </div>
+          </li>
+          <li>
+            <span class="step-marker">3</span>
+            <div>
+              <strong>Career</strong>
+              <small>CVs, interviews, recognition of degrees</small>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="float-card float-card-badge">
+        <strong>Beyond the classroom</strong>
+        <small>Cultural coaching included</small>
+      </div>
+
+      <div class="float-card float-card-stat">
+        <strong>3</strong>
+        <small>pillars in every course</small>
+      </div>
+    </div>
   </div>
 </section>
 
 <style>
   .welcome {
-    background: linear-gradient(180deg, var(--color-gold-light) 0%, var(--color-bg) 100%);
-    padding-block: clamp(3rem, 7vw, 4.5rem) clamp(2.5rem, 5vw, 3.5rem);
-    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding-block: clamp(3rem, 7vw, 4.5rem) clamp(3rem, 7vw, 5rem);
+    background: linear-gradient(
+      180deg,
+      var(--color-bg) 0%,
+      var(--color-gold-light) 46%,
+      var(--color-primary-light) 100%
+    );
   }
 
-  .welcome-inner {
-    max-width: 720px;
-    margin-inline: auto;
+  .welcome-backdrop {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
   }
 
-  .welcome-badge {
+  .welcome-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(10px);
+  }
+
+  .welcome-glow-1 {
+    width: 380px;
+    height: 380px;
+    top: -160px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(200, 155, 60, 0.22), transparent 70%);
+  }
+
+  .welcome-glow-2 {
+    width: 300px;
+    height: 300px;
+    bottom: -120px;
+    right: -80px;
+    background: radial-gradient(circle, rgba(29, 78, 137, 0.16), transparent 70%);
+  }
+
+  .welcome-grid {
+    position: relative;
+    display: grid;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .welcome-copy h1 {
+    font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+    max-width: 560px;
+  }
+
+  .welcome-copy .lede {
+    max-width: 500px;
+    margin-bottom: 0;
+  }
+
+  .journey-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    margin-top: 2.1rem;
+  }
+
+  .journey-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+
+  .journey-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 3.25rem;
-    height: 3.25rem;
-    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    border-radius: var(--radius-md);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+
+  .journey-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .journey-text strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 0.98rem;
+    color: var(--color-navy-900);
+    margin-bottom: 0.15rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .journey-text strong {
+      color: var(--color-text);
+    }
+  }
+
+  .journey-text small {
+    font-size: 0.82rem;
+    color: var(--color-text-muted);
+  }
+
+  .welcome-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2.2rem;
+  }
+
+  /* Visual composition */
+  .welcome-visual {
+    position: relative;
+    min-height: 380px;
+  }
+
+  .corner-frame {
+    position: absolute;
+    inset: 8% 8% auto auto;
+    top: 6%;
+    right: 6%;
+    width: 74%;
+    height: 68%;
+    border: 1px solid var(--color-gold);
+    border-radius: var(--radius-lg);
+    opacity: 0.35;
+    transform: rotate(-6deg);
+  }
+
+  .dot-field {
+    position: absolute;
+    inset: 4% 4%;
+    border-radius: var(--radius-lg);
+    background-image: radial-gradient(rgba(14, 42, 74, 0.16) 1px, transparent 1.6px);
+    background-size: 18px 18px;
+    opacity: 0.3;
+    mask-image: radial-gradient(circle at 50% 40%, black 45%, transparent 85%);
+  }
+
+  .path-card {
+    position: relative;
+    z-index: 1;
     background: var(--color-surface);
-    color: var(--color-gold-dark);
-    box-shadow: var(--shadow-sm);
-    margin-bottom: 1.1rem;
-  }
-
-  .welcome .eyebrow {
-    justify-content: center;
-  }
-
-  .welcome h1 {
-    font-size: clamp(1.9rem, 4vw, 2.6rem);
-  }
-
-  .welcome .lede {
-    font-size: 1.08rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 1.75rem;
+    max-width: 340px;
     margin-inline: auto;
   }
 
-  .pillars {
+  .path-card-header {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 1.75rem;
+    align-items: center;
+    gap: 0.7rem;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: var(--color-navy-900);
+    margin-bottom: 1.4rem;
   }
 
-  .pillars li {
-    font-family: var(--font-heading);
-    font-size: 0.82rem;
-    font-weight: 600;
+  @media (prefers-color-scheme: dark) {
+    .path-card-header {
+      color: var(--color-text);
+    }
+  }
+
+  .path-mark {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--color-gold);
     color: var(--color-navy-900);
+  }
+
+  .path-mark svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .path-steps {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    padding-left: 0;
+  }
+
+  .path-steps::before {
+    content: '';
+    position: absolute;
+    top: 14px;
+    bottom: 14px;
+    left: 13px;
+    width: 2px;
+    background: var(--color-border);
+  }
+
+  .path-steps li {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+
+  .step-marker {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-soft);
+    font-size: 0.78rem;
+    font-weight: 700;
+  }
+
+  .path-steps li.is-done .step-marker {
+    background: var(--color-success);
+    border-color: var(--color-success);
+    color: #fff;
+  }
+
+  .path-steps li.is-current .step-marker {
+    background: var(--color-gold);
+    border-color: var(--color-gold);
+    color: var(--color-navy-900);
+  }
+
+  .path-steps strong {
+    display: block;
+    font-size: 0.92rem;
+    color: var(--color-navy-900);
+    margin-bottom: 0.1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .path-steps strong {
+      color: var(--color-text);
+    }
+  }
+
+  .path-steps small {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+  }
+
+  .float-card {
+    position: absolute;
+    z-index: 2;
     background: var(--color-surface);
     border: 1px solid var(--color-border);
-    padding: 0.5em 1em;
-    border-radius: var(--radius-pill);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: 0.9rem 1.1rem;
+  }
+
+  .float-card-badge {
+    top: 2%;
+    right: 0;
+    max-width: 200px;
+  }
+
+  .float-card-badge strong {
+    display: block;
+    font-size: 0.82rem;
+    color: var(--color-navy-900);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .float-card-badge strong {
+      color: var(--color-text);
+    }
+  }
+
+  .float-card-badge small {
+    font-size: 0.72rem;
+    color: var(--color-text-soft);
+  }
+
+  .float-card-stat {
+    bottom: 2%;
+    left: 0;
+    text-align: center;
+  }
+
+  .float-card-stat strong {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.3rem;
+    color: var(--color-navy-900);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .float-card-stat strong {
+      color: var(--color-text);
+    }
+  }
+
+  .float-card-stat small {
+    font-size: 0.72rem;
+    color: var(--color-text-soft);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .float-card-badge,
+    .float-card-stat {
+      animation: welcome-float 6.5s ease-in-out infinite;
+    }
+    .float-card-stat {
+      animation-delay: 1.4s;
+    }
+  }
+
+  @keyframes welcome-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-9px);
+    }
+  }
+
+  @media (min-width: 960px) {
+    .welcome-grid {
+      grid-template-columns: 1.05fr 0.95fr;
+    }
   }
 </style>
