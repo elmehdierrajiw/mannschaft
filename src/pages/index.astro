@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import WelcomeSection from '../components/WelcomeSection.astro';
 import Hero from '../components/Hero.astro';
 import CourseCard from '../components/CourseCard.astro';
 import FeatureCard from '../components/FeatureCard.astro';
@@ -19,6 +20,7 @@ const faqPreview = FAQ_ITEMS.slice(0, 5);
   description="Learn German from A1 to C1 with small classes, practical conversation, and dedicated Goethe & telc exam preparation. Join Mannschaft Sprachzentrum in Berlin or online."
   path="/"
 >
+  <WelcomeSection />
   <Hero />
 
   <!-- About -->

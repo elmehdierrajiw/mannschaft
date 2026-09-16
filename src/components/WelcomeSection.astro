@@ -1,0 +1,96 @@
+---
+const pillars = [
+  { label: 'German Language' },
+  { label: 'Cultural Integration' },
+  { label: 'Professional Life in Germany' },
+];
+---
+
+<section class="welcome">
+  <div class="container welcome-inner">
+    <span class="welcome-badge" aria-hidden="true">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M4 12c2-3 4-4.5 8-4.5S18 9 20 12c-2 3-4 4.5-8 4.5S6 15 4 12z"
+          stroke="currentColor"
+          stroke-width="1.6"
+          stroke-linejoin="round"
+        ></path>
+        <circle cx="12" cy="12" r="2.4" stroke="currentColor" stroke-width="1.6" />
+      </svg>
+    </span>
+
+    <p class="eyebrow">Welcome</p>
+    <h1>Welcome to Mannschaft</h1>
+    <p class="lede">
+      Mannschaft is a German language center that helps people prepare for life and work in
+      Germany — not just for a test. Alongside structured German lessons, we build the cultural
+      understanding and everyday know-how that make settling into professional life here feel
+      natural, so you arrive not just speaking the language, but ready to belong.
+    </p>
+
+    <ul class="pillars">
+      {pillars.map((pillar) => (
+        <li>{pillar.label}</li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .welcome {
+    background: linear-gradient(180deg, var(--color-gold-light) 0%, var(--color-bg) 100%);
+    padding-block: clamp(3rem, 7vw, 4.5rem) clamp(2.5rem, 5vw, 3.5rem);
+    text-align: center;
+  }
+
+  .welcome-inner {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .welcome-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    border-radius: 50%;
+    background: var(--color-surface);
+    color: var(--color-gold-dark);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 1.1rem;
+  }
+
+  .welcome .eyebrow {
+    justify-content: center;
+  }
+
+  .welcome h1 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+  }
+
+  .welcome .lede {
+    font-size: 1.08rem;
+    margin-inline: auto;
+  }
+
+  .pillars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.75rem;
+  }
+
+  .pillars li {
+    font-family: var(--font-heading);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-navy-900);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 0.5em 1em;
+    border-radius: var(--radius-pill);
+  }
+</style>
